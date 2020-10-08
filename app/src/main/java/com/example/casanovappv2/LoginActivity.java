@@ -45,6 +45,9 @@ public class LoginActivity extends AppCompatActivity {
                 if(!Correo.isEmpty() && !Contraseña.isEmpty()) {
                     LoginUser();
                 }else{
+
+
+
                     Toast.makeText(LoginActivity.this, "Complete los Campos", Toast.LENGTH_SHORT).show();
                 }
             }

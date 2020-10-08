@@ -42,7 +42,6 @@ public class RecuperarPassword extends AppCompatActivity {
     }
     public void resetPassword(){
         mAuth.setLanguageCode("es");
-        mAuth.set
 
     }
 }

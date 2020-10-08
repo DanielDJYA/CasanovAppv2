@@ -3,6 +3,7 @@
 
     <string name="login">Login</string>
     <string name="registrarUsuario">Registrar Usuario</string>
+    <string name="restablecerContraseña">Restablecer Contraseña</string>
     <string name="yaTengoCuenta">Ya tengo una Cuenta</string>
 
 
@@ -10,6 +11,8 @@
     <string name="entrarSistema">Entrar</string>
     <string name="registrarNuevoUsuario">Registrarse</string>
     <string name="olvidarteTuContraseña">Olvistaste tu Contraseña?</string>
+    <string name="cambiarContraseña">Cambiar Contraseña?</string>
+
 
     <string name="ingreseNombres">Ingrese Nombres</string>
     <string name="ingreseApellidos">Ingrese Apellidos</string>

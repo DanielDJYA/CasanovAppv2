@@ -3,6 +3,7 @@ package com.example.casanovappv2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEditTextCorreo;
     private EditText mEditTextContraseña;
     private  Button mButtonEntrar;
+    private Button mButtonOlvidoContraseña;
+    private Button mButtonCuentaNueva;
+    //MENSAJE DE CARGA
+    private ProgressDialog mDialogo;
     //CREAMOS LAS VARIABLES DE LOS DATOS
     private String Correo;
     private String Contraseña;
@@ -33,8 +38,26 @@ public class LoginActivity extends AppCompatActivity {
         mEditTextCorreo=(EditText)findViewById(R.id.mEditTextCorreo);
         mEditTextContraseña=(EditText)findViewById(R.id.mEditTextContraseña);
         mButtonEntrar=(Button)findViewById(R.id.mButtonEntrar);
-
+        mButtonOlvidoContraseña=(Button)findViewById(R.id.mButtonOlvidoContraseña);
+        mButtonCuentaNueva=(Button)findViewById(R.id.mButtonCuentaNueva);
+        //MENSAJE DE CARGA  (this significa en este contexto)
+        mDialogo=new ProgressDialog(this);
         mAuth=FirebaseAuth.getInstance();
+
+        //NOS REDIRECCIONA RECUPERAR CONTRASEÑA
+        mButtonOlvidoContraseña.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RecuperarPassword.class));
+            }
+        });
+        //NOS REDIRECCIONA A REGISTRO DE NUEVO USUARIO
+        mButtonCuentaNueva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RegisterUserActivity.class));
+            }
+        });
 
         mButtonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +65,9 @@ public class LoginActivity extends AppCompatActivity {
                 Correo=mEditTextCorreo.getText().toString();
                 Contraseña=mEditTextContraseña.getText().toString();
                 if(!Correo.isEmpty() && !Contraseña.isEmpty()) {
+                    mDialogo.setMessage("Espere un momento");
+                    mDialogo.setCanceledOnTouchOutside(false);
+                    mDialogo.show();
                     LoginUser();
                 }else{
                     Toast.makeText(LoginActivity.this, "Complete los Campos", Toast.LENGTH_SHORT).show();
@@ -59,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(LoginActivity.this, "Nose Pudo Iniciar Sesion Compruebe los Datos", Toast.LENGTH_SHORT).show();
             }
+                mDialogo.dismiss();
             }
         });
     }

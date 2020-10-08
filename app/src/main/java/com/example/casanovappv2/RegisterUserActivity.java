@@ -3,6 +3,7 @@ package com.example.casanovappv2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,8 @@ public class RegisterUserActivity extends AppCompatActivity {
     private String Telefono;
     private String Correo;
     private String Contraseña;
+    //MENSAJE DE CARGA
+    private ProgressDialog mDialogo;
     //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -57,6 +60,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         mEditTextContraseña=(EditText)findViewById(R.id.mEditTextContraseña);
         mButtonRegistrarUsuario=(Button)findViewById(R.id.mButtonRegistrarUsuario);
         mButtonLogin=(Button)findViewById(R.id.mButtonLogin);
+        //MENSAJE DE CARGA  (this significa en este contexto)
+        mDialogo=new ProgressDialog(this);
         //INSTANCIAMOS LOS ELEMENTOS DE FIREBASE
         mAuth=FirebaseAuth.getInstance();
         mDatabase=FirebaseDatabase.getInstance().getReference();
@@ -91,6 +96,9 @@ public class RegisterUserActivity extends AppCompatActivity {
                     //LA CONTRASEÑA DEBE SER MAYOR IGUAL A 7 DIGITOS
                     if(Contraseña.length()>=7)
                     {
+                        mDialogo.setMessage("Espere un momento");
+                        mDialogo.setCanceledOnTouchOutside(false);
+                        mDialogo.show();
                         //EJECUTAMOS LA FUNCION REGISTERUSER()
                         RegisterUser();
                     }else{
@@ -149,6 +157,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                     //ERROR QUE NO SE PUDO REGISTRAR EL USUARIO
                     Toast.makeText(RegisterUserActivity.this, "Nose pudo Registrar este Usuario", Toast.LENGTH_SHORT).show();
                 }
+                mDialogo.dismiss();
             }
         });
     }

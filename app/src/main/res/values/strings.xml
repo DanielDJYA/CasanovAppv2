@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CasanovAppv2</string>
+
+    <string name="login">Login</string>
+    <string name="registrarUsuario">Registrar Usuario</string>
+    <string name="yaTengoCuenta">Ya tengo una Cuenta</string>
+
+
+    <string name="noTienesCuentaRegistrateAqui">No Tienes Cuenta? Registrate aquí</string>
+    <string name="entrarSistema">Entrar</string>
+    <string name="registrarNuevoUsuario">Registrarse</string>
+    <string name="olvidarteTuContraseña">Olvistaste tu Contraseña?</string>
+
+    <string name="ingreseNombres">Ingrese Nombres</string>
+    <string name="ingreseApellidos">Ingrese Apellidos</string>
+    <string name="ingreseDNI">Ingrese DNI</string>
+    <string name="ingreseEdad">Ingrese Edad</string>
+    <string name="ingreseTelefono">Ingrese Telefono</string>
+    <string name="ingreseCorreo">Ingrese Correo</string>
+    <string name="ingresePassword">Ingrese Contraseña</string>
+    <string name="ingreseConfirmarPassword">Confirmar Contraseña</string>
+
+</resources>

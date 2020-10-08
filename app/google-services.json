@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "803944368480",
+    "firebase_url": "https://casnovappv2.firebaseio.com",
+    "project_id": "casnovappv2",
+    "storage_bucket": "casnovappv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803944368480:android:2f47c30798a8d5585a7605",
+        "android_client_info": {
+          "package_name": "com.example.casanovappv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803944368480-o9m3a1dlvno9ob1hkj9n250i9eshdk1i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.casanovappv2",
+            "certificate_hash": "72d630e792992c6bd11e5ba1181ae15edddf7822"
+          }
+        },
+        {
+          "client_id": "803944368480-fmd6sq0o25gh7vtq0t9ek5t45sha9pjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb58h_qC_G-1cbJlmEVybQ7qaUI-xmPlg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803944368480-fmd6sq0o25gh7vtq0t9ek5t45sha9pjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondoprincipal"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/logo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_ripple_contener_login"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textColor="@color/blanco"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/mEditTextCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textStyle="normal"
+            android:background="@drawable/bg_ripple_campos"
+            android:hint="@string/ingreseCorreo"
+            android:textColor="@color/negro"
+            android:inputType="textEmailAddress"
+            android:importantForAutofill="no"
+            />
+
+        <EditText
+            android:id="@+id/mEditTextContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textStyle="normal"
+            android:background="@drawable/bg_ripple_campos"
+            android:hint="@string/ingresePassword"
+            android:textColor="@color/negro"
+            android:inputType="textPassword"
+            android:importantForAutofill="no"
+            />
+        <TextView
+            android:id="@+id/mTextViewOlvidoContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:layout_marginBottom="20sp"
+            android:layout_marginTop="10sp"
+            android:text="@string/olvidarteTuContraseña"
+            android:textColor="@color/blanco"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            />
+
+        <Button
+            android:id="@+id/mButtonEntrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textStyle="normal"
+            android:background="@drawable/color_btn_uno"
+            android:textColor="@drawable/texto_btn_uno"
+            android:text="@string/entrarSistema"
+            />
+
+        <TextView
+            android:id="@+id/mTextViewRegistrarUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="@string/noTienesCuentaRegistrateAqui"
+            android:textColor="@color/blanco"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            />
+    </LinearLayout>
+</LinearLayout>

@@ -55,6 +55,7 @@ public class PerfilUserActivity extends AppCompatActivity {
         mButtonCerrarSesion=(Button)findViewById(R.id.mButtonCerrarSesion);
 
         mAuth=FirebaseAuth.getInstance();
+        mDatabase=FirebaseDatabase.getInstance().getReference();
 
         mButtonCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +73,7 @@ public class PerfilUserActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    Nombres=snapshot.child("Nombre").getValue().toString();
+                    Nombres=snapshot.child("Nombres").getValue().toString();
                     Apellidos=snapshot.child("Apellidos").getValue().toString();
                     NDni=snapshot.child("NDni").getValue().toString();
                     Edad=snapshot.child("Edad").getValue().toString();
@@ -86,14 +87,11 @@ public class PerfilUserActivity extends AppCompatActivity {
                     mTextViewTelefono.setText(Telefono);
                     mTextViewCorreo.setText(Correo);
                     mTextViewContraseña.setText(Contraseña);
-
                     }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
 }

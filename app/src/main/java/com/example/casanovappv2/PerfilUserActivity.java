@@ -38,8 +38,8 @@ public class PerfilUserActivity extends AppCompatActivity {
     private String Correo;
     private String Contraseña;
     //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
-    FirebaseAuth mAuth;
-    DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,6 @@ public class PerfilUserActivity extends AppCompatActivity {
         mButtonCerrarSesion=(Button)findViewById(R.id.mButtonCerrarSesion);
 
         mAuth=FirebaseAuth.getInstance();
-        mDatabase=FirebaseDatabase.getInstance().getReference();
 
         mButtonCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +64,7 @@ public class PerfilUserActivity extends AppCompatActivity {
                 finish();
             }
         });
+        getUserInfo();
     }
     private void getUserInfo(){
         String Id=mAuth.getCurrentUser().getUid();
@@ -86,8 +86,8 @@ public class PerfilUserActivity extends AppCompatActivity {
                     mTextViewTelefono.setText(Telefono);
                     mTextViewCorreo.setText(Correo);
                     mTextViewContraseña.setText(Contraseña);
-                    Toast.makeText(PerfilUserActivity.this, "Usuario Valido", Toast.LENGTH_SHORT).show();
-                }
+
+                    }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

@@ -3,7 +3,9 @@ package com.example.casanovappv2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +17,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import dmax.dialog.SpotsDialog;
+
 public class RecuperarPassword extends AppCompatActivity {
     private EditText mEditTextCorreo;
     private Button mButtonEntrar;
     private String correo;
-    //mensaje de carga
-    private ProgressDialog mDialogo;
+    //MENSAJE DE CARGA
+    private AlertDialog mDialogo;
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
     @Override
@@ -29,21 +33,21 @@ public class RecuperarPassword extends AppCompatActivity {
         setContentView(R.layout.activity_recuperar_password);
         mEditTextCorreo=(EditText)findViewById(R.id.mEditTextCorreo);
         mButtonEntrar=(Button)findViewById(R.id.mButtonEntrar);
-        //mensaje (this significa en este contexto)
-        mDialogo=new ProgressDialog(this);
+        //CARGA DE ESPERA PERSONALIZADA BY DANIEL
+        mDialogo= new SpotsDialog.Builder()
+                .setContext(this)
+                .setMessage("Espere un Momento")
+                .setCancelable(false).build();
         mAuth=FirebaseAuth.getInstance();
         mButtonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 correo=mEditTextCorreo.getText().toString();
                 if(!correo.isEmpty()){
-                    mDialogo.setMessage("Espere un momento");
-                    mDialogo.setCanceledOnTouchOutside(false);
                     mDialogo.show();
                     resetPassword();
-
                 }else{
-                    Toast.makeText(RecuperarPassword.this, "Complete los Campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RecuperarPassword.this, "Ingrese su correo electronico", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -54,9 +58,10 @@ public class RecuperarPassword extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(RecuperarPassword.this, "Se ah enviado un correo para restablecer su contraseña", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                    Toast.makeText(RecuperarPassword.this, "Se ah enviado un correo para restablecer su contraseña, verifique su Correo", Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(RecuperarPassword.this, "Ocurrio un error en el envio ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RecuperarPassword.this, "El Correo es Invalido", Toast.LENGTH_LONG).show();
                 }
                 mDialogo.dismiss();
             }

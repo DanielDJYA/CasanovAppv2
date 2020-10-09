@@ -3,6 +3,7 @@ package com.example.casanovappv2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import dmax.dialog.SpotsDialog;
 
 public class RegisterUserActivity extends AppCompatActivity {
     //LLAMAMOS A LOS COMPONENTES DE XML
@@ -41,7 +44,7 @@ public class RegisterUserActivity extends AppCompatActivity {
     private String Correo;
     private String Contraseña;
     //MENSAJE DE CARGA
-    private ProgressDialog mDialogo;
+    private AlertDialog mDialogo;
     //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -60,8 +63,11 @@ public class RegisterUserActivity extends AppCompatActivity {
         mEditTextContraseña=(EditText)findViewById(R.id.mEditTextContraseña);
         mButtonRegistrarUsuario=(Button)findViewById(R.id.mButtonRegistrarUsuario);
         mButtonLogin=(Button)findViewById(R.id.mButtonLogin);
-        //MENSAJE DE CARGA  (this significa en este contexto)
-        mDialogo=new ProgressDialog(this);
+        //CARGA DE ESPERA PERSONALIZADA BY DANIEL
+        mDialogo= new SpotsDialog.Builder()
+                .setContext(this)
+                .setMessage("Espere un Momento")
+                .setCancelable(false).build();
         //INSTANCIAMOS LOS ELEMENTOS DE FIREBASE
         mAuth=FirebaseAuth.getInstance();
         mDatabase=FirebaseDatabase.getInstance().getReference();
@@ -94,16 +100,14 @@ public class RegisterUserActivity extends AppCompatActivity {
                         && !Correo.isEmpty()
                         && !Contraseña.isEmpty()) {
                     //LA CONTRASEÑA DEBE SER MAYOR IGUAL A 7 DIGITOS
-                    if(Contraseña.length()>=7)
+                    if(Contraseña.length()>=6)
                     {
-                        mDialogo.setMessage("Espere un momento");
-                        mDialogo.setCanceledOnTouchOutside(false);
                         mDialogo.show();
                         //EJECUTAMOS LA FUNCION REGISTERUSER()
                         RegisterUser();
                     }else{
                         //MENSAJE DE ERROR DE LA CONTRASEÑA
-                        Toast.makeText(RegisterUserActivity.this, "El password debe tener alemnos 6 caracteres", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterUserActivity.this, "El password debe tener contener 6 caracteres", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{

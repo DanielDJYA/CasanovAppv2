@@ -74,15 +74,19 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Correo=mEditTextCorreo.getText().toString();
                 Contraseña=mEditTextContraseña.getText().toString();
-                if(!Correo.isEmpty() && !Contraseña.isEmpty()) {
-                if(Contraseña.length()>=6){
-                    mDialogo.show();
-                    LoginUser();
-                }else{
-                    Toast.makeText(LoginActivity.this, "El password debe tener contener 6 caracteres", Toast.LENGTH_LONG).show();
+                if(!Correo.isEmpty()){
+                    if(!Contraseña.isEmpty()){
+                        if(Contraseña.length()>=6){
+                            mDialogo.show();
+                            LoginUser();
+                        }else{
+                            Toast.makeText(LoginActivity.this, "El password debe tener contener 6 caracteres", Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(LoginActivity.this, "Ingrese su contraseña", Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(LoginActivity.this, "Complete los Campos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Ingrese su correo electronico", Toast.LENGTH_LONG).show();
                 }
             }
         });

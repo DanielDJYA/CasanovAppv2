@@ -161,6 +161,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                     //ERROR QUE NO SE PUDO REGISTRAR EL USUARIO
                     Toast.makeText(RegisterUserActivity.this, "Nose pudo Registrar este Usuario", Toast.LENGTH_SHORT).show();
                 }
+                //CERRAMOS EL MENSAJE DE ESPERA
                 mDialogo.dismiss();
             }
         });

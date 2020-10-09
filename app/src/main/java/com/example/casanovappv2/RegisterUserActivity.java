@@ -33,6 +33,7 @@ public class RegisterUserActivity extends AppCompatActivity {
     private EditText mEditTextTelefono;
     private EditText mEditTextCorreo;
     private EditText mEditTextContraseña;
+    private EditText mEditTextConfirmarContraseña;
     private Button mButtonRegistrarUsuario;
     private Button mButtonLogin;
     //CREAMOS LAS VARIABLES DE LOS DATOS
@@ -43,6 +44,7 @@ public class RegisterUserActivity extends AppCompatActivity {
     private String Telefono;
     private String Correo;
     private String Contraseña;
+    private String ConfirmarContraseña;
     //MENSAJE DE CARGA
     private AlertDialog mDialogo;
     //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
@@ -61,6 +63,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         mEditTextTelefono=(EditText)findViewById(R.id.mEditTextTelefono);
         mEditTextCorreo=(EditText)findViewById(R.id.mEditTextCorreo);
         mEditTextContraseña=(EditText)findViewById(R.id.mEditTextContraseña);
+        mEditTextConfirmarContraseña=(EditText)findViewById(R.id.mEditTextConfirmarContraseña);
         mButtonRegistrarUsuario=(Button)findViewById(R.id.mButtonRegistrarUsuario);
         mButtonLogin=(Button)findViewById(R.id.mButtonLogin);
         //CARGA DE ESPERA PERSONALIZADA BY DANIEL
@@ -91,28 +94,50 @@ public class RegisterUserActivity extends AppCompatActivity {
                 Telefono=mEditTextTelefono.getText().toString();
                 Correo=mEditTextCorreo.getText().toString();
                 Contraseña=mEditTextContraseña.getText().toString();
+                ConfirmarContraseña=mEditTextConfirmarContraseña.getText().toString();
                 //CONFIRMAMOS QUE LOS CAMPOS NO ESTEN VACIOS
-                if(!Nombres.isEmpty()
-                        && !Apellidos.isEmpty()
-                        && !NDni.isEmpty()
-                        && !Edad.isEmpty()
-                        && !Telefono.isEmpty()
-                        && !Correo.isEmpty()
-                        && !Contraseña.isEmpty()) {
-                    //LA CONTRASEÑA DEBE SER MAYOR IGUAL A 7 DIGITOS
-                    if(Contraseña.length()>=6)
-                    {
-                        mDialogo.show();
-                        //EJECUTAMOS LA FUNCION REGISTERUSER()
-                        RegisterUser();
+                if(!Nombres.isEmpty()) {
+                    if(!Apellidos.isEmpty()) {
+                        if(!NDni.isEmpty()){
+                            if(!Edad.isEmpty()){
+                                if(!Telefono.isEmpty()){
+                                    if(!Correo.isEmpty()){
+                                        if(!Contraseña.isEmpty()){
+                                            if(Contraseña.length()>=6){
+                                                if(!ConfirmarContraseña.isEmpty()){
+                                                    if(Contraseña!=ConfirmarContraseña){
+                                                        mDialogo.show();
+                                                        //EJECUTAMOS LA FUNCION REGISTERUSER()
+                                                        RegisterUser();
+                                                    }else{
+                                                        Toast.makeText(RegisterUserActivity.this, "Las Contraseñas no Coinciden", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }else{
+                                                    Toast.makeText(RegisterUserActivity.this, "Confirme su Contraseña", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }else{
+                                                Toast.makeText(RegisterUserActivity.this, "La Contraseña Debe tener Almenos 6 Caracteres", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }else{
+                                            Toast.makeText(RegisterUserActivity.this, "Ingrese Contraseña", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }else{
+                                        Toast.makeText(RegisterUserActivity.this, "Ingrese su Correo", Toast.LENGTH_SHORT).show();
+                                    }
+                                }else{
+                                    Toast.makeText(RegisterUserActivity.this, "Ingrese su Telefono", Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                Toast.makeText(RegisterUserActivity.this, "Ingrese su Edad", Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
+                            Toast.makeText(RegisterUserActivity.this, "Ingrese N° de Dni", Toast.LENGTH_SHORT).show();
+                        }
                     }else{
-                        //MENSAJE DE ERROR DE LA CONTRASEÑA
-                        Toast.makeText(RegisterUserActivity.this, "El password debe tener contener 6 caracteres", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterUserActivity.this, "Ingrese sus Apellidos", Toast.LENGTH_SHORT).show();
                     }
-                }
-                else{
-                    //MENSAJE DE ERROR DE TODOS LOS CAMPOS DEBEN ESTAR LLENOS
-                    Toast.makeText(RegisterUserActivity.this, "Debe Completar Todos los Campos", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(RegisterUserActivity.this, "Ingrese sus Nombres", Toast.LENGTH_SHORT).show();
                 }
             }
         });

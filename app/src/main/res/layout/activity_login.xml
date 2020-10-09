@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/color_btn_uno"
+            android:background="@drawable/color_btn_entrar"
             android:text="@string/entrarSistema"
             android:textColor="@drawable/texto_btn_uno"
             android:textStyle="normal" />

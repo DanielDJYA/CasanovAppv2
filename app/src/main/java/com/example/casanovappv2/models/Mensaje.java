@@ -3,7 +3,7 @@ package com.example.casanovappv2.models;
 public class Mensaje {
     private String texto;
 
-    public Mensaje(String mensaje) {
+    public Mensaje() {
     }
 
     public void Mensaje(String texto){

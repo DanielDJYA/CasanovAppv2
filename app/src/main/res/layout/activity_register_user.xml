@@ -162,7 +162,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
                 android:textStyle="normal"
-                android:background="@drawable/color_btn_uno"
+                android:background="@drawable/color_btn_entrar"
                 android:textColor="@drawable/texto_btn_uno"
                 android:text="@string/registrarUsuario"
                 />
@@ -175,7 +175,7 @@
                 android:layout_marginLeft="30dp"
                 android:textStyle="normal"
                 android:background="@drawable/bg_ripple_btn_dos_cancelar"
-                android:textColor="@drawable/texto_btn_uno"
+                android:textColor="@drawable/texto_btn_dos"
                 android:text="@string/yaTengoCuenta"
                 />
         </LinearLayout>

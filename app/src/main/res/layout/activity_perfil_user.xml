@@ -4,76 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="20dp"
-    tools:context=".PerfilUserActivity"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".PerfilUserActivity">
+
     <TextView
         android:id="@+id/mTextViewNombres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Nombres :"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
+
     <TextView
         android:id="@+id/mTextViewApellidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Apellidos :"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
+
     <TextView
         android:id="@+id/mTextViewNDni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="NDni :"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
+
     <TextView
         android:id="@+id/mTextViewEdad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Edad :"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
+
     <TextView
         android:id="@+id/mTextViewTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Telefono :"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
+
     <TextView
         android:id="@+id/mTextViewCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Correo :"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
+
     <TextView
         android:id="@+id/mTextViewContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Contraseña :"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/mButtonCerrarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Cerrar Sesion"
-        />
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/campo_etiqueta_flotante"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Etiqueta flotante"
-            android:singleLine="true" />
-    </android.support.design.widget.TextInputLayout>
+        android:text="Cerrar Sesion" />
 </LinearLayout>

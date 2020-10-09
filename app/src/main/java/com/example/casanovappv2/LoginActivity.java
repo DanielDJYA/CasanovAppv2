@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mEditTextCorreo=(EditText)findViewById(R.id.mEditTextCorreo);
+        mEditTextCorreo.requestFocus();
         mEditTextContraseña=(EditText)findViewById(R.id.mEditTextContraseña);
         mButtonEntrar=(Button)findViewById(R.id.mButtonEntrar);
         mButtonOlvidoContraseña=(Button)findViewById(R.id.mButtonOlvidoContraseña);

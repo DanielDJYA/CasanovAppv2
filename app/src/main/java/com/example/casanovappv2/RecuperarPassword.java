@@ -32,6 +32,7 @@ public class RecuperarPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_password);
         mEditTextCorreo=(EditText)findViewById(R.id.mEditTextCorreo);
+        mEditTextCorreo.requestFocus();
         mButtonEntrar=(Button)findViewById(R.id.mButtonEntrar);
         //CARGA DE ESPERA PERSONALIZADA BY DANIEL
         mDialogo= new SpotsDialog.Builder()

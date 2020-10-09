@@ -37,8 +37,10 @@
             android:background="@drawable/bg_ripple_campos"
             android:hint="@string/ingreseNombres"
             android:textColor="@color/negro"
-            android:importantForAutofill="no"
-            android:inputType="text" />
+            android:importantForAutofill="yes"
+            android:inputType="text"
+            android:maxLength="20"
+             />
 
 
         <EditText
@@ -55,6 +57,7 @@
             android:textColor="@color/negro"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:maxLength="20"
             />
         <EditText
             android:id="@+id/mEditTextNDni"
@@ -113,6 +116,7 @@
             android:textColor="@color/negro"
             android:inputType="textEmailAddress"
             android:importantForAutofill="no"
+            android:maxLength="50"
             />
         <EditText
             android:id="@+id/mEditTextContraseña"
@@ -127,6 +131,7 @@
             android:textColor="@color/negro"
             android:inputType="textPassword"
             android:importantForAutofill="no"
+            android:maxLength="15"
             />
         <EditText
             android:id="@+id/mEditTextConfirmarContraseña"
@@ -141,6 +146,7 @@
             android:textColor="@color/negro"
             android:inputType="textPassword"
             android:importantForAutofill="no"
+            android:maxLength="15"
             />
 
         <LinearLayout

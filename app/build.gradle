@@ -34,13 +34,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:17.0.0'
     //MENSAJE DE CARGA
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
-    //DISEÑO DE TEXT FLOAT
-
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
 //PULGIN DE FIREBASE
-
 apply plugin: 'com.google.gms.google-services'

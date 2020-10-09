@@ -65,4 +65,15 @@
         android:layout_margin="20dp"
         android:text="Cerrar Sesion"
         />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/campo_etiqueta_flotante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Etiqueta flotante"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
 </LinearLayout>

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         editTextMensaje=(EditText)findViewById(R.id.editTextMensaje);
         btnCrearDato=(Button)findViewById(R.id.btnCrearDato);
         mRecyclerView=(RecyclerView)findViewById(R.id.recyclerViewMensajes);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         mDatabase= FirebaseDatabase.getInstance().getReference();

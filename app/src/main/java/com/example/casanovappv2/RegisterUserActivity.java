@@ -108,7 +108,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                                                 if (!Contraseña.isEmpty()) {
                                                     if (Contraseña.length() >= 6) {
                                                         if (!ConfirmarContraseña.isEmpty()) {
-                                                            if (Contraseña != ConfirmarContraseña) {
+                                                            if (Contraseña.equals(ConfirmarContraseña)) {
                                                                 mDialogo.show();
                                                                 //EJECUTAMOS LA FUNCION REGISTERUSER()
                                                                 RegisterUser();

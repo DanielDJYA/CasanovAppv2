@@ -6,6 +6,9 @@ public class Mensaje {
     public Mensaje() {
     }
 
+    public Mensaje(Object texto) {
+    }
+
     public void Mensaje(String texto){
 
         this.texto=texto;

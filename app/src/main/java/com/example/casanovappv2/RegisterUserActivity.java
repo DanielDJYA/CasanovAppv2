@@ -110,7 +110,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                                                         if (!ConfirmarContraseña.isEmpty()) {
                                                             if (Contraseña.equals(ConfirmarContraseña)) {
                                                                 mDialogo.show();
-                                                                //EJECUTAMOS LA FUNCION REGISTERUSER()
+
                                                                 RegisterUser();
                                                             } else {
                                                                 Toast.makeText(RegisterUserActivity.this, "Las Contraseñas no Coinciden", Toast.LENGTH_SHORT).show();

@@ -28,11 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
     //CREAMOS VARIABLES DE FIREBASE:DATABASE
     DatabaseReference mDatabase;
-
     private MensajeAdapters mAdapter;
     private RecyclerView mRecyclerView;
     private ArrayList<Mensaje> mMensajesList=new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView=(RecyclerView)findViewById(R.id.recyclerViewMensajes);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
+        //INSTANCIAS EL FIREBASE
         mDatabase= FirebaseDatabase.getInstance().getReference();
 
         btnCrearDato.setOnClickListener(new View.OnClickListener() {
@@ -63,18 +61,14 @@ public class MainActivity extends AppCompatActivity {
                     mMensajesList.clear();
                     for (DataSnapshot ds: datasnapshot.getChildren()) {
                         String texto=ds.child("texto").getValue().toString();
-
                         mMensajesList.add(new Mensaje(texto));
-
                     }
                     mAdapter = new MensajeAdapters(mMensajesList, R.layout.mensajeview);
                     mRecyclerView.setAdapter(mAdapter);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

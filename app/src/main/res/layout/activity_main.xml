@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/rosado_rojo"
         android:hint="Ingrese Datos"
-
         />
     <Button
         android:id="@+id/btnCrearDato"
@@ -24,11 +23,10 @@
         android:layout_margin="20dp"
         android:text="Registrar"
         />
-<androidx.recyclerview.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerViewMensajes"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
 </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

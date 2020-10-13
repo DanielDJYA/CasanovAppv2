@@ -11,7 +11,7 @@
     <string name="entrarSistema">Entrar</string>
     <string name="registrarNuevoUsuario">Registrarse</string>
     <string name="olvidarteTuContraseña">Olvistaste tu Contraseña?</string>
-    <string name="cambiarContraseña">Cambiar Contraseña?</string>
+    <string name="enviarAlCorreoElectronico">Enviar al Correo Electronico</string>
 
 
     <string name="ingreseNombres">Ingrese Nombres</string>

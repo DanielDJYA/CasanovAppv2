@@ -9,5 +9,6 @@
     <color name="colorPrimaryDark">#7CB342</color>
     <color name="colorAccent">#FDD835</color>
     <color name="colorRojo">#FF0600</color>
+    <color name="trasnparente">#00000000</color>
 
 </resources>

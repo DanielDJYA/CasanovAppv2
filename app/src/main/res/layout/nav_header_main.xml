@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/rosado_rojo"
+    android:orientation="vertical"
+    android:paddingTop="40dp"
+    android:paddingBottom="5dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:layout_width="230dp"
+        android:layout_height="78dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+        />
+
+    <TextView
+        android:id="@+id/adada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Bienvenido: Daniel Josue Yañez Agurto "
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+</LinearLayout>

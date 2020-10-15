@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_perfil"
+            android:title="Perfil" />
+        <item android:id="@+id/nav_habitacion"
+            android:icon="@drawable/ic_habitacion"
+            android:title="Habitaciones" />
+        <item android:id="@+id/nav_reserva"
+            android:icon="@drawable/ic_reserva"
+            android:title="Reserva" />
+        <item android:id="@+id/nav_nosotros"
+            android:icon="@drawable/ic_nosostros"
+            android:title="Acerca de Nostros" />
+    </group>
+    <item android:title="Acciones adicionales">
+        <menu>
+            <item android:id="@+id/nav_compartir"
+                android:icon="@drawable/ic_compartir"
+                android:title="Compartir APP" />
+            <item android:id="@+id/nav_cerrar_sesion"
+                android:icon="@drawable/ic_cerrar_sesion"
+                android:title="Cerrar Sesion" />
+        </menu>
+    </item>
+</menu>

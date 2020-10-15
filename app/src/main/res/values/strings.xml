@@ -23,4 +23,7 @@
     <string name="ingresePassword">Ingrese Contraseña</string>
     <string name="ingreseConfirmarPassword">Confirmar Contraseña</string>
 
+    <string name="drawer_open">abrir</string>
+    <string name="drawer_close">cerrar</string>
+
 </resources>

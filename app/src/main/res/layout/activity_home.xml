@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/rosado_rojo"
+        app:titleTextColor="@color/blanco"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/mEditTextNombre"
@@ -86,14 +94,6 @@
         android:gravity="center"
         android:text="Contraseña :"
          />
-
-    <Button
-        android:id="@+id/mButtonCerrarSesion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Cerrar Sesion" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHabitaciones"

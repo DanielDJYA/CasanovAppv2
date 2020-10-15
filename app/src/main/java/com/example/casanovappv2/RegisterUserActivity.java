@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -184,7 +183,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                             //CCOMPROBAMOS SI LA TAREA2 TASK2 FUE EXISTOSA
                             if (task2.isSuccessful()) {
                                 //ENVIAMOS AL PERFILUSER
-                                startActivity(new Intent(getApplicationContext(), PerfilUserActivity.class));
+                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                                 //TERMINAMOS LA ACCION
                                 finish();
                             } else {

@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.casanovappv2.R;
-import com.example.casanovappv2.models.Mensaje;
+import com.example.casanovappv2.models.Usuarios;
 
 import java.util.ArrayList;
 
-public class MensajeAdapters extends RecyclerView.Adapter<MensajeAdapters.ViewHolder> {
+public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.ViewHolder> {
 
     private int resource;
-    private ArrayList<Mensaje> mensajesList;
-    public MensajeAdapters(ArrayList<Mensaje> mensajesList, int resource){
+    private ArrayList<Usuarios> mensajesList;
+    public UsuariosAdapter(ArrayList<Usuarios> mensajesList, int resource){
         this.mensajesList=mensajesList;
         this.resource=resource;
     }
@@ -31,8 +31,9 @@ public class MensajeAdapters extends RecyclerView.Adapter<MensajeAdapters.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int index) {
-        Mensaje mensaje=mensajesList.get(index);
-        viewHolder.textViewMensaje.setText(mensaje.getTexto());
+        Usuarios mensaje=mensajesList.get(index);
+        viewHolder.mtextViewMensajeNombres.setText(mensaje.getNombres());
+        viewHolder.mtextViewMensajeApellidos.setText(mensaje.getApellidos());
     }
 
     @Override
@@ -42,12 +43,14 @@ public class MensajeAdapters extends RecyclerView.Adapter<MensajeAdapters.ViewHo
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView textViewMensaje;
+        private TextView mtextViewMensajeNombres;
+        private TextView mtextViewMensajeApellidos;
         public View view;
         public ViewHolder(View view){
             super(view);
             this.view=view;
-            this.textViewMensaje=(TextView) view.findViewById(R.id.textViewMensaje);
+            this.mtextViewMensajeNombres=(TextView) view.findViewById(R.id.mtextViewMensajeNombres);
+            this.mtextViewMensajeApellidos=(TextView) view.findViewById(R.id.mtextViewMensajeApellidos);
         }
 
     }

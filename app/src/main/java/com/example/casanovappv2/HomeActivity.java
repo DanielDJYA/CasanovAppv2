@@ -38,36 +38,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    //DATOS DE LISTAR
-    /*private UsuariosAdapter mAdapter;
-    private RecyclerView recyclerViewMensajes;
-    private ArrayList<Usuarios> mMensajesList=new ArrayList<>();*/
-
-
-    //LLAMAMOS A LOS COMPONENTES DE XML
-    private TextView mTextViewNombres;
-    private TextView mTextViewApellidos;
-    private TextView mTextViewNDni;
-    private TextView mTextViewEdad;
-    private TextView mTextViewTelefono;
-    private TextView mTextViewCorreo;
-    private TextView mTextViewContraseña;
-    //CREAMOS LAS VARIABLES DE LOS DATOS
-    private String Nombres;
-    private String Apellidos;
-    private String NDni;
-    private String Edad;
-    private String Telefono;
-    private String Correo;
-    private String Contraseña;
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-
-
-
-    //HABITACION
+    //HABITACION para agregar era
     private Button mButtonCrearDatoHabitacion;
     private EditText mEditTextNombre;
     private EditText mEditTextDescripcion;
@@ -76,11 +51,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private String Nombre;
     private String Descripcion;
     private String Precio;
-    //LISTAR
     //DATOS DE LISTAR
     private HabitacionesAdapter mAdapterHabitaciones;
     private RecyclerView recyclerViewHabitaciones;
-    private ArrayList<Habitaciones> mHabitacionesList=new ArrayList<>();
+    private ArrayList<Habitaciones> mHabitacionesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,66 +62,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.drawerlayout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-// Navigation Drawer
-        DrawerLayout drawer = (DrawerLayout) findViewById(
-                R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawer, toolbar, R.string.drawer_open, R.string. drawer_close);
+        // Navigation Drawer
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        //MENU
-
-        //HABITACION
-        mEditTextNombre=(EditText)findViewById(R.id.mEditTextNombre);
-        mEditTextDescripcion=(EditText)findViewById(R.id.mEditTextDescripcion);
-        mEditTextPrecio=(EditText)findViewById(R.id.mEditTextPrecio);
-        mButtonCrearDatoHabitacion=(Button)findViewById(R.id.mButtonCrearDatoHabitacion);
-        recyclerViewHabitaciones=(RecyclerView)findViewById(R.id.recyclerViewHabitaciones);
-        recyclerViewHabitaciones.setLayoutManager(new LinearLayoutManager(this));
-        mButtonCrearDatoHabitacion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Nombre=mEditTextNombre.getText().toString();
-                Descripcion=mEditTextDescripcion.getText().toString();
-                Precio=mEditTextPrecio.getText().toString();
-                Map<String, Object> mapHabitaciones=new HashMap<>();
-                mapHabitaciones.put("Nombre",Nombre);
-                mapHabitaciones.put("Descripcion",Descripcion);
-                mapHabitaciones.put("Precio",Precio);
-                mDatabase.child("Habitaciones").push().setValue(mapHabitaciones).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(HomeActivity.this, "Habitacion Creada Corecctamente", Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(HomeActivity.this, "No se Pudo Registrar la Habitacion", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        });
-
-
-        mTextViewNombres=(TextView)findViewById(R.id.mTextViewNombres);
-        mTextViewApellidos=(TextView)findViewById(R.id.mTextViewApellidos);
-        mTextViewNDni=(TextView)findViewById(R.id.mTextViewNDni);
-        mTextViewEdad=(TextView)findViewById(R.id.mTextViewEdad);
-        mTextViewTelefono=(TextView)findViewById(R.id.mTextViewTelefono);
-        mTextViewCorreo=(TextView)findViewById(R.id.mTextViewCorreo);
-        mTextViewContraseña=(TextView)findViewById(R.id.mTextViewContraseña);
-        //DATOS DEL RECIBLER VIEW
-        /*recyclerViewMensajes=(RecyclerView)findViewById(R.id.recyclerViewMensajes);
-        recyclerViewMensajes.setLayoutManager(new LinearLayoutManager(this));*/
         //DATOS DEL FIREBASE
-        mAuth=FirebaseAuth.getInstance();
-        mDatabase=FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        getUserInfo();
+        recyclerViewHabitaciones = (RecyclerView) findViewById(R.id.recyclerViewHabitaciones);
+        recyclerViewHabitaciones.setLayoutManager(new LinearLayoutManager(this));
         ListarHabitaciones();
     }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -185,6 +115,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(
@@ -195,50 +126,47 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
+
     //LISTAR
-    private void ListarHabitaciones(){
+    private void ListarHabitaciones() {
         mDatabase.child("Habitaciones").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                if(datasnapshot.exists()){
+                if (datasnapshot.exists()) {
                     mHabitacionesList.clear();
-                    for (DataSnapshot ds: datasnapshot.getChildren()) {
-                        Nombre=ds.child("Nombre").getValue().toString();
-                        Descripcion=ds.child("Descripcion").getValue().toString();
-                        Precio=ds.child("Precio").getValue().toString();
-                        mHabitacionesList.add(new Habitaciones(Nombre,Descripcion,Precio));
+                    for (DataSnapshot ds : datasnapshot.getChildren()) {
+                        Nombre = ds.child("Nombre").getValue().toString();
+                        Descripcion = ds.child("Descripcion").getValue().toString();
+                        Precio = ds.child("Precio").getValue().toString();
+                        mHabitacionesList.add(new Habitaciones(Nombre, Descripcion, Precio));
                     }
                     mAdapterHabitaciones = new HabitacionesAdapter(mHabitacionesList, R.layout.activity_lista_habitaciones);
                     recyclerViewHabitaciones.setAdapter(mAdapterHabitaciones);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
+}
 
 
-    //OBTENER DATOS USUARIOS
-    private void getUserInfo(){
-        String Id=mAuth.getCurrentUser().getUid();
+//OBTENER DATOS USUARIOS
+    /*private void getUserInfo() {
+        String Id = mAuth.getCurrentUser().getUid();
         mDatabase.child("Usuarios").child(Id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    Nombres=snapshot.child("Nombres").getValue().toString();
-                    Apellidos=snapshot.child("Apellidos").getValue().toString();
-                    NDni=snapshot.child("NDni").getValue().toString();
-                    Edad=snapshot.child("Edad").getValue().toString();
-                    Telefono=snapshot.child("Telefono").getValue().toString();
-                    Correo=snapshot.child("Correo").getValue().toString();
-                    Contraseña=snapshot.child("Contraseña").getValue().toString();
+                if (snapshot.exists()) {
+                    Nombres = snapshot.child("Nombres").getValue().toString();
+                    Apellidos = snapshot.child("Apellidos").getValue().toString();
+                    NDni = snapshot.child("NDni").getValue().toString();
+                    Edad = snapshot.child("Edad").getValue().toString();
+                    Telefono = snapshot.child("Telefono").getValue().toString();
+                    Correo = snapshot.child("Correo").getValue().toString();
+                    Contraseña = snapshot.child("Contraseña").getValue().toString();
                     mTextViewNombres.setText(Nombres);
                     mTextViewApellidos.setText(Apellidos);
                     mTextViewNDni.setText(NDni);
@@ -246,15 +174,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     mTextViewTelefono.setText(Telefono);
                     mTextViewCorreo.setText(Correo);
                     mTextViewContraseña.setText(Contraseña);
-                    }
+                }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-    }
+    }*/
 
-    //LISTAR USUARIOS
+//LISTAR USUARIOS
     /*private void ListarUsuarios(){
         mDatabase.child("Usuarios").addValueEventListener(new ValueEventListener() {
             @Override
@@ -276,4 +205,3 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
     }*/
 
-}

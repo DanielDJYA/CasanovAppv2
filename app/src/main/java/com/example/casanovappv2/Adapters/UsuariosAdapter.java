@@ -1,4 +1,4 @@
-package com.example.casanovappv2.Adapters;
+/*package com.example.casanovappv2.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +52,6 @@ public class UsuariosAdapter extends RecyclerView.Adapter<UsuariosAdapter.ViewHo
             this.mtextViewMensajeNombres=(TextView) view.findViewById(R.id.mtextViewMensajeNombres);
             this.mtextViewMensajeApellidos=(TextView) view.findViewById(R.id.mtextViewMensajeApellidos);
         }
-
     }
-
 }
+*/

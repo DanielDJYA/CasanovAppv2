@@ -7,12 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.casanovappv2.Adapters.UsuariosAdapter;
+import com.example.casanovappv2.Adapters.HabitacionesAdapter;
+/*import com.example.casanovappv2.Adapters.UsuariosAdapter;*/
+import com.example.casanovappv2.models.Habitaciones;
 import com.example.casanovappv2.models.Usuarios;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,12 +29,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
     //DATOS DE LISTAR
-    private UsuariosAdapter mAdapter;
+    /*private UsuariosAdapter mAdapter;
     private RecyclerView recyclerViewMensajes;
-    private ArrayList<Usuarios> mMensajesList=new ArrayList<>();
+    private ArrayList<Usuarios> mMensajesList=new ArrayList<>();*/
 
 
     //LLAMAMOS A LOS COMPONENTES DE XML
@@ -50,10 +60,60 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
+
+
+    //HABITACION
+    private Button mButtonCrearDatoHabitacion;
+    private EditText mEditTextNombre;
+    private EditText mEditTextDescripcion;
+    private EditText mEditTextPrecio;
+    //VARIABLES
+    private String Nombre;
+    private String Descripcion;
+    private String Precio;
+    //LISTAR
+    //DATOS DE LISTAR
+    private HabitacionesAdapter mAdapterHabitaciones;
+    private RecyclerView recyclerViewHabitaciones;
+    private ArrayList<Habitaciones> mHabitacionesList=new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //MENU
+
+        //HABITACION
+        mEditTextNombre=(EditText)findViewById(R.id.mEditTextNombre);
+        mEditTextDescripcion=(EditText)findViewById(R.id.mEditTextDescripcion);
+        mEditTextPrecio=(EditText)findViewById(R.id.mEditTextPrecio);
+        mButtonCrearDatoHabitacion=(Button)findViewById(R.id.mButtonCrearDatoHabitacion);
+        recyclerViewHabitaciones=(RecyclerView)findViewById(R.id.recyclerViewHabitaciones);
+        recyclerViewHabitaciones.setLayoutManager(new LinearLayoutManager(this));
+        mButtonCrearDatoHabitacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Nombre=mEditTextNombre.getText().toString();
+                Descripcion=mEditTextDescripcion.getText().toString();
+                Precio=mEditTextPrecio.getText().toString();
+                Map<String, Object> mapHabitaciones=new HashMap<>();
+                mapHabitaciones.put("Nombre",Nombre);
+                mapHabitaciones.put("Descripcion",Descripcion);
+                mapHabitaciones.put("Precio",Precio);
+                mDatabase.child("Habitaciones").push().setValue(mapHabitaciones).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(HomeActivity.this, "Habitacion Creada Corecctamente", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(HomeActivity.this, "No se Pudo Registrar la Habitacion", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+
         mTextViewNombres=(TextView)findViewById(R.id.mTextViewNombres);
         mTextViewApellidos=(TextView)findViewById(R.id.mTextViewApellidos);
         mTextViewNDni=(TextView)findViewById(R.id.mTextViewNDni);
@@ -63,8 +123,8 @@ public class HomeActivity extends AppCompatActivity {
         mTextViewContraseña=(TextView)findViewById(R.id.mTextViewContraseña);
         mButtonCerrarSesion=(Button)findViewById(R.id.mButtonCerrarSesion);
         //DATOS DEL RECIBLER VIEW
-        recyclerViewMensajes=(RecyclerView)findViewById(R.id.recyclerViewMensajes);
-        recyclerViewMensajes.setLayoutManager(new LinearLayoutManager(this));
+        /*recyclerViewMensajes=(RecyclerView)findViewById(R.id.recyclerViewMensajes);
+        recyclerViewMensajes.setLayoutManager(new LinearLayoutManager(this));*/
 
         //DATOS DEL FIREBASE
         mAuth=FirebaseAuth.getInstance();
@@ -78,7 +138,36 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
-        ListarMensaje();
+        getUserInfo();
+        ListarHabitaciones();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    //LISTAR
+    private void ListarHabitaciones(){
+        mDatabase.child("Habitaciones").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                if(datasnapshot.exists()){
+                    mHabitacionesList.clear();
+                    for (DataSnapshot ds: datasnapshot.getChildren()) {
+                        Nombre=ds.child("Nombre").getValue().toString();
+                        Descripcion=ds.child("Descripcion").getValue().toString();
+                        Precio=ds.child("Precio").getValue().toString();
+                        mHabitacionesList.add(new Habitaciones(Nombre,Descripcion,Precio));
+                    }
+                    mAdapterHabitaciones = new HabitacionesAdapter(mHabitacionesList, R.layout.activity_lista_habitaciones);
+                    recyclerViewHabitaciones.setAdapter(mAdapterHabitaciones);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
 
@@ -112,7 +201,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     //LISTAR
-    private void ListarMensaje(){
+    /*private void ListarUsuarios(){
         mDatabase.child("Usuarios").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -123,7 +212,7 @@ public class HomeActivity extends AppCompatActivity {
                         Apellidos=ds.child("Apellidos").getValue().toString();
                         mMensajesList.add(new Usuarios(Nombres,Apellidos));
                     }
-                    mAdapter = new UsuariosAdapter(mMensajesList, R.layout.mensajeview);
+                    mAdapter = new UsuariosAdapter(mMensajesList, R.layout.activity_lista_habitaciones);
                     recyclerViewMensajes.setAdapter(mAdapter);
                 }
             }
@@ -131,5 +220,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-    }
+    }*/
+
 }

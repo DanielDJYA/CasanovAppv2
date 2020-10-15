@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondoprincipal"
+    android:background="@drawable/gradiente"
     tools:context=".RegisterUserActivity">
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:orientation="vertical"
-        android:background="@drawable/bg_ripple_contener_registro_usuarios"
+        android:background="@drawable/bg_ripple_contener_login"
         >
         <TextView
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:importantForAutofill="yes"
             android:inputType="text"
             android:maxLength="20"
-             />
+            android:autofillHints="" />
 
 
         <EditText

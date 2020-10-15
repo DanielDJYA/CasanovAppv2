@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,59 +8,84 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
+    <EditText
+        android:id="@+id/mEditTextNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ingrese nombre" />
+    <EditText
+        android:id="@+id/mEditTextDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ingrese descripcion" />
+    <EditText
+        android:id="@+id/mEditTextPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ingrese Precio" />
+    <Button
+        android:id="@+id/mButtonCrearDatoHabitacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Guardar DATO" />
+
+
     <TextView
         android:id="@+id/mTextViewNombres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Nombres :" />
+        android:text="Nombres :"
+         />
 
     <TextView
         android:id="@+id/mTextViewApellidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Apellidos :" />
+        android:text="Apellidos :"
+         />
 
     <TextView
         android:id="@+id/mTextViewNDni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="NDni :" />
+        android:text="NDni :"
+        />
 
     <TextView
         android:id="@+id/mTextViewEdad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Edad :" />
+        android:text="Edad :"
+         />
 
     <TextView
         android:id="@+id/mTextViewTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Telefono :" />
+        android:text="Telefono :"
+         />
 
     <TextView
         android:id="@+id/mTextViewCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Correo :" />
+        android:text="Correo :"
+         />
 
     <TextView
         android:id="@+id/mTextViewContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Contraseña :" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMensajes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+        android:text="Contraseña :"
+         />
 
     <Button
         android:id="@+id/mButtonCerrarSesion"
@@ -67,4 +93,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="Cerrar Sesion" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHabitaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

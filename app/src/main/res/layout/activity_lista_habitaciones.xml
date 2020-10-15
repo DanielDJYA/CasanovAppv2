@@ -30,15 +30,27 @@
                 android:background="@drawable/fondoprincipal" />
 
             <TextView
-                android:layout_width="123dp"
+                android:id="@+id/mCosto"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
+                android:layout_gravity="left|bottom"
                 android:background="@color/fondorgb"
                 android:gravity="center"
-                android:text="S/50.00"
+                android:text="S/"
+                android:textColor="@color/blanco"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/mTextViewPrecio"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:background="@color/fondorgb"
+                android:gravity="center"
+                android:text="50.00"
                 android:textColor="@color/blanco"
                 android:textStyle="bold"
-                android:textSize="30sp"/>
+                android:textSize="30sp" />
 
         </FrameLayout>
 
@@ -48,7 +60,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/mtextViewMensajeNombres"
+                android:id="@+id/mTextViewNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -57,7 +69,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/mtextViewMensajeApellidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Caracteristicas:"
@@ -66,7 +77,8 @@
             <TextView
                 android:id="@+id/mTextViewCaracteristicas"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
                 android:text="Aire acondicionado,
 Frigobar,
 Conexion a Internet,

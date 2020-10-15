@@ -1,6 +1,7 @@
 package com.example.casanovappv2.models;
 
 public class Usuarios {
+    private String Id;
     private String Nombres;
     private String Apellidos;
     private String NDni;
@@ -13,7 +14,13 @@ public class Usuarios {
         Nombres = nombres;
         Apellidos = apellidos;
     }
+    public String getId() {
+        return Id;
+    }
 
+    public void setId(String id) {
+        Id = id;
+    }
     public String getNombres() {
         return Nombres;
     }

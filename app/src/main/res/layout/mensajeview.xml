@@ -1,30 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_margin="10sp"
-    >
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10sp"
-        app:cardElevation="3dp">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="15dp"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
 
-        <RelativeLayout
-            android:layout_width="156dp"
-            android:layout_height="wrap_content"
-            android:padding="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@color/rosado_rojo" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                >
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="123dp"
+                    android:layout_height="123dp"
+
+                    android:background="@drawable/fondoprincipal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/fondorgb"
+                    android:gravity="center"
+                    android:text="S/50.00"
+                    android:textColor="@color/blanco"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="123dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mtextViewMensajeNombres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Habitaciones"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/mtextViewMensajeApellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Caracteristicas:"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/mTextViewCaracteristicas"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Aire acondicionado,
+Frigobar,
+Conexion a Internet,
+Jacuzzy,
+Telefono en linea Directa,
+TV plasma satelital."
+                    android:textSize="13sp" />
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="bottom|center"
+                    android:background="@drawable/bg_ripple_btn_dos_cancelar"
+                    android:textColor="@drawable/texto_btn_dos"
+                    android:text="Reservar"
+                    />
+            </LinearLayout>
+        </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
-</LinearLayout>

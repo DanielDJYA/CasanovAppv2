@@ -29,4 +29,7 @@
     <string name="habitacion_doble">Habitacion doble</string>
     <string name="titulo_de_la_foto">Titulo de la foto</string>
 
+    <string name="drawer_open">abrir</string>
+    <string name="drawer_close">cerrar</string>
+
 </resources>

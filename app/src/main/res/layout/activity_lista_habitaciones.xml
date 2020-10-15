@@ -27,7 +27,7 @@
                 android:layout_width="123dp"
                 android:layout_height="123dp"
 
-                android:background="@drawable/fondoprincipal" />
+                android:background="@drawable/fondo_de_pantalla" />
 
             <TextView
                 android:id="@+id/mCosto"

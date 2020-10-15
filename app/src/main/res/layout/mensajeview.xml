@@ -5,84 +5,85 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="15dp"
-    android:layout_marginTop="5dp"
     android:orientation="vertical"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:layout_width="123dp"
+                android:layout_height="123dp"
+
+                android:background="@drawable/fondoprincipal" />
+
+            <TextView
+                android:layout_width="123dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:background="@color/fondorgb"
+                android:gravity="center"
+                android:text="S/50.00"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                android:textSize="30sp"/>
+
+        </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:layout_height="123dp"
+            android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                >
-
-                <TextView
-                    android:layout_width="123dp"
-                    android:layout_height="123dp"
-
-                    android:background="@drawable/fondoprincipal" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/fondorgb"
-                    android:gravity="center"
-                    android:text="S/50.00"
-                    android:textColor="@color/blanco"
-                    android:textStyle="bold" />
-
-            </FrameLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/mtextViewMensajeNombres"
                 android:layout_width="match_parent"
-                android:layout_height="123dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Habitaciones"
+                android:textSize="23sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/mtextViewMensajeNombres"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Habitaciones"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/mtextViewMensajeApellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Caracteristicas:"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/mtextViewMensajeApellidos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Caracteristicas:"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/mTextViewCaracteristicas"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:text="Aire acondicionado,
+            <TextView
+                android:id="@+id/mTextViewCaracteristicas"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Aire acondicionado,
 Frigobar,
 Conexion a Internet,
 Jacuzzy,
 Telefono en linea Directa,
 TV plasma satelital."
-                    android:textSize="13sp" />
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="bottom|center"
-                    android:background="@drawable/bg_ripple_btn_dos_cancelar"
-                    android:textColor="@drawable/texto_btn_dos"
-                    android:text="Reservar"
-                    />
-            </LinearLayout>
+                android:textSize="13sp" />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:layout_gravity="bottom|center"
+                android:background="@drawable/bg_ripple_btn_dos_cancelar"
+                android:text="Reservar"
+                android:textColor="@drawable/texto_btn_dos" />
         </LinearLayout>
+    </LinearLayout>
 
 
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>

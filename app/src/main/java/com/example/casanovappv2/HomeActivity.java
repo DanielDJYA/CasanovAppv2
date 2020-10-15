@@ -78,7 +78,6 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
-        getUserInfo();
         ListarMensaje();
     }
 

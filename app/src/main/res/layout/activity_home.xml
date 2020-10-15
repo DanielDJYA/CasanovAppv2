@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
@@ -14,56 +12,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Nombres :"
-        android:textSize="30sp" />
+        android:text="Nombres :" />
 
     <TextView
         android:id="@+id/mTextViewApellidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Apellidos :"
-        android:textSize="30sp" />
+        android:text="Apellidos :" />
 
     <TextView
         android:id="@+id/mTextViewNDni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="NDni :"
-        android:textSize="30sp" />
+        android:text="NDni :" />
 
     <TextView
         android:id="@+id/mTextViewEdad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Edad :"
-        android:textSize="30sp" />
+        android:text="Edad :" />
 
     <TextView
         android:id="@+id/mTextViewTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Telefono :"
-        android:textSize="30sp" />
+        android:text="Telefono :" />
 
     <TextView
         android:id="@+id/mTextViewCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Correo :"
-        android:textSize="30sp" />
+        android:text="Correo :" />
 
     <TextView
         android:id="@+id/mTextViewContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Contraseña :"
-        android:textSize="30sp" />
+        android:text="Contraseña :" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMensajes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/mButtonCerrarSesion"
@@ -71,12 +67,4 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="Cerrar Sesion" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMensajes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SubirFoto">
+
+    <EditText
+        android:id="@+id/et_titulo"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/titulo_de_la_foto"/>
+
+    <Button
+        android:id="@+id/btn_selefoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/blanco"
+        android:text="Seleccionar Foto"
+        android:background="@color/rosado_rojo"
+        ></Button>
+    <ImageView
+        android:id="@+id/img_foto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ImageView>
+
+    <Button
+
+        android:id="@+id/btn_subirfoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/blanco"
+        android:text="Subir Foto"
+        android:background="@color/negro"
+        ></Button>
+
+    <Button
+
+        android:id="@+id/btn_verGaleria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/blanco"
+        android:text="Ver Galeria de Fotos"
+        android:background="@color/negro"
+        ></Button>
+
+</LinearLayout>

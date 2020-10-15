@@ -35,7 +35,7 @@ public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.FotosVie
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_galeria,parent,false);
         FotosViewHolder holder = new FotosViewHolder(v);
 
-        return null;
+        return holder;
     }
 
     @Override

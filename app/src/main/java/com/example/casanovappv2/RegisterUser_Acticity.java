@@ -23,7 +23,7 @@ import java.util.Map;
 
 import dmax.dialog.SpotsDialog;
 
-public class RegisterUserActivity extends AppCompatActivity {
+public class RegisterUser_Acticity extends AppCompatActivity {
     //LLAMAMOS A LOS COMPONENTES DE XML
     private EditText mEditTextNombres;
     private EditText mEditTextApellidos;
@@ -78,7 +78,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), Login_Acticity.class));
                 // no tendra retorno al registro usuario finish();
             }
         });
@@ -112,42 +112,42 @@ public class RegisterUserActivity extends AppCompatActivity {
 
                                                                 RegisterUser();
                                                             } else {
-                                                                Toast.makeText(RegisterUserActivity.this, "Las Contraseñas no Coinciden", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(RegisterUser_Acticity.this, "Las Contraseñas no Coinciden", Toast.LENGTH_SHORT).show();
                                                             }
                                                         } else {
-                                                            Toast.makeText(RegisterUserActivity.this, "Confirme su Contraseña", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(RegisterUser_Acticity.this, "Confirme su Contraseña", Toast.LENGTH_SHORT).show();
                                                         }
                                                     } else {
-                                                        Toast.makeText(RegisterUserActivity.this, "La Contraseña Debe tener Almenos 6 Caracteres", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(RegisterUser_Acticity.this, "La Contraseña Debe tener Almenos 6 Caracteres", Toast.LENGTH_SHORT).show();
                                                     }
                                                 } else {
-                                                    Toast.makeText(RegisterUserActivity.this, "Ingrese Contraseña", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterUser_Acticity.this, "Ingrese Contraseña", Toast.LENGTH_SHORT).show();
                                                 }
                                             } else {
-                                                Toast.makeText(RegisterUserActivity.this, "Ingrese su Correo", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(RegisterUser_Acticity.this, "Ingrese su Correo", Toast.LENGTH_SHORT).show();
                                             }
                                         } else {
-                                            Toast.makeText(RegisterUserActivity.this, "El Telefono debe contener 9 caracteres", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegisterUser_Acticity.this, "El Telefono debe contener 9 caracteres", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
-                                        Toast.makeText(RegisterUserActivity.this, "Ingrese su Telefono", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterUser_Acticity.this, "Ingrese su Telefono", Toast.LENGTH_SHORT).show();
                                     }
 
                                 } else {
-                                    Toast.makeText(RegisterUserActivity.this, "Ingrese su Edad", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterUser_Acticity.this, "Ingrese su Edad", Toast.LENGTH_SHORT).show();
                                 }
 
                             } else {
-                                Toast.makeText(RegisterUserActivity.this, "El N° de Dni tiene que tener 8 caracteres", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterUser_Acticity.this, "El N° de Dni tiene que tener 8 caracteres", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(RegisterUserActivity.this, "Ingrese N° de Dni", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterUser_Acticity.this, "Ingrese N° de Dni", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(RegisterUserActivity.this, "Ingrese sus Apellidos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterUser_Acticity.this, "Ingrese sus Apellidos", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(RegisterUserActivity.this, "Ingrese sus Nombres", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterUser_Acticity.this, "Ingrese sus Nombres", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -183,19 +183,19 @@ public class RegisterUserActivity extends AppCompatActivity {
                             //CCOMPROBAMOS SI LA TAREA2 TASK2 FUE EXISTOSA
                             if (task2.isSuccessful()) {
                                 //ENVIAMOS AL PERFILUSER
-                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                                startActivity(new Intent(getApplicationContext(), Home_Acticity.class));
                                 //TERMINAMOS LA ACCION
                                 finish();
                             } else {
                                 //EL ERROR QUE NO SE PUDO COMPLETAR LA ACCION DE REGISTRO
-                                Toast.makeText(RegisterUserActivity.this, "No se pudo Completar la Accion de Registro", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterUser_Acticity.this, "No se pudo Completar la Accion de Registro", Toast.LENGTH_SHORT).show();
 
                             }
                         }
                     });
                 } else {
                     //ERROR QUE NO SE PUDO REGISTRAR EL USUARIO
-                    Toast.makeText(RegisterUserActivity.this, "Nose pudo Registrar este Usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterUser_Acticity.this, "Nose pudo Registrar este Usuario", Toast.LENGTH_SHORT).show();
                 }
                 //CERRAMOS EL MENSAJE DE ESPERA
                 mDialogo.dismiss();

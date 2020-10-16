@@ -11,21 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.casanovappv2.Adapters.HabitacionesAdapter;
 /*import com.example.casanovappv2.Adapters.UsuariosAdapter;*/
 import com.example.casanovappv2.models.Habitaciones;
-import com.example.casanovappv2.models.Usuarios;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,13 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+public class Home_Acticity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //HABITACION para agregar era
     private Button mButtonCrearDatoHabitacion;
     private EditText mEditTextNombre;
@@ -51,15 +40,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private String Nombre;
     private String Descripcion;
     private String Precio;
-    //DATOS DE LISTAR
+    //elementos de lista
     private HabitacionesAdapter mAdapterHabitaciones;
     private RecyclerView recyclerViewHabitaciones;
     private ArrayList<Habitaciones> mHabitacionesList = new ArrayList<>();
 
+    //VARIABLE DEL NOMBRE Y APELLIDO DEL MENU BIENVENIDO
+    private TextView mTextViewNombresYApellidos;
+    private String NombresUsu;
+    private String ApellidosUsu;
+
+    FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawerlayout);
+        //TOLBAR
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Navigation Drawer
@@ -69,13 +66,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //
+        View headerLayout=navigationView.getHeaderView(0);
+        mTextViewNombresYApellidos=(TextView) headerLayout.findViewById(R.id.mTextViewNombresYApellidos);
         //DATOS DEL FIREBASE
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        //RECIBLER VIEW
         recyclerViewHabitaciones = (RecyclerView) findViewById(R.id.recyclerViewHabitaciones);
         recyclerViewHabitaciones.setLayoutManager(new LinearLayoutManager(this));
+        //LLAMAMOS A LA LISTA
         ListarHabitaciones();
+        getUserInfo();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -83,7 +86,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_perfil:
-                // startActivity(new Intent(this, Multimedia.class));
+                startActivity(new Intent(this, PerfilUser_Acticity.class));
                 break;
             case R.id.nav_habitacion:
                 //startActivity(new Intent(this, Permisos.class));
@@ -104,7 +107,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_cerrar_sesion:
                 mAuth.signOut();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), Login_Acticity.class));
                 finish();
                 break;
             default:
@@ -150,38 +153,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
-}
 
-
-//OBTENER DATOS USUARIOS
-    /*private void getUserInfo() {
+private void getUserInfo() {
         String Id = mAuth.getCurrentUser().getUid();
         mDatabase.child("Usuarios").child(Id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    Nombres = snapshot.child("Nombres").getValue().toString();
-                    Apellidos = snapshot.child("Apellidos").getValue().toString();
-                    NDni = snapshot.child("NDni").getValue().toString();
-                    Edad = snapshot.child("Edad").getValue().toString();
-                    Telefono = snapshot.child("Telefono").getValue().toString();
-                    Correo = snapshot.child("Correo").getValue().toString();
-                    Contraseña = snapshot.child("Contraseña").getValue().toString();
-                    mTextViewNombres.setText(Nombres);
-                    mTextViewApellidos.setText(Apellidos);
-                    mTextViewNDni.setText(NDni);
-                    mTextViewEdad.setText(Edad);
-                    mTextViewTelefono.setText(Telefono);
-                    mTextViewCorreo.setText(Correo);
-                    mTextViewContraseña.setText(Contraseña);
+                    NombresUsu = snapshot.child("Nombres").getValue().toString();
+                    ApellidosUsu = snapshot.child("Apellidos").getValue().toString();
+                    mTextViewNombresYApellidos.setText(NombresUsu+" "+ApellidosUsu);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-    }*/
+    }}
 
 //LISTAR USUARIOS
     /*private void ListarUsuarios(){

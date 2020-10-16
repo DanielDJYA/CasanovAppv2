@@ -1,7 +1,6 @@
 package com.example.casanovappv2.models;
 
 public class Habitaciones {
-    private String Id;
     private String Nombre;
     private String Descripcion;
     private String Precio;
@@ -14,13 +13,6 @@ public class Habitaciones {
         Precio = precio;
     }
 
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
 
     public String getNombre() {
         return Nombre;

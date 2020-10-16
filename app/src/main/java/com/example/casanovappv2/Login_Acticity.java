@@ -19,56 +19,55 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import dmax.dialog.SpotsDialog;
 
-public class LoginActivity extends AppCompatActivity {
-    //LLAMAMOS A LOS COMPONENTES DE XML
+public class Login_Acticity extends AppCompatActivity {
+    //LLAMAMOS A LOS COMPONENTES DE XML ACTIVITY_LOGIN
     private EditText mEditTextCorreo;
     private EditText mEditTextContraseña;
     private  Button mButtonEntrar;
     private Button mButtonOlvidoContraseña;
     private Button mButtonCuentaNueva;
-    //MENSAJE DE CARGA
+    //MENSAJE DE CARGA A LA HORA DE ENTRAR AL SISTEMA
     private AlertDialog mDialogo;
     //CREAMOS LAS VARIABLES DE LOS DATOS
     private String Correo;
     private String Contraseña;
-    //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
+    //CREAMOS VARIABLES DE FIREBASE: AUTH
     FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //HACEMOS REFERENCIAS A LOS COMPONENTES DE ACTIVITY_LOGIN.XML
         mEditTextCorreo=(EditText)findViewById(R.id.mEditTextCorreo);
         mEditTextCorreo.requestFocus();
         mEditTextContraseña=(EditText)findViewById(R.id.mEditTextContraseña);
         mButtonEntrar=(Button)findViewById(R.id.mButtonEntrar);
         mButtonOlvidoContraseña=(Button)findViewById(R.id.mButtonOlvidoContraseña);
         mButtonCuentaNueva=(Button)findViewById(R.id.mButtonCuentaNueva);
-        //MENSAJE DE CARGA  (this significa en este contexto)
+        //HACEMOS REFERENCIA A FIREBASE: AUTH
+        mAuth=FirebaseAuth.getInstance();
+        //HACEMOS REFERENCIAS AL MENSAJE DE CARGA
         mDialogo=new ProgressDialog(this);
-        //CARGA DE ESPERA PERSONALIZADA BY DANIEL
+        //PERSONALIZAMOS CARGA - CARGA DE ESPERA PERSONALIZADA BY:DANIEL
         mDialogo= new SpotsDialog.Builder()
                 .setContext(this)
-                .setMessage("Espere un Momento")
+                .setMessage("Verificando Usuario")
                 .setCancelable(false).build();
-        //INSTANCIAS FIREBASE AUTH
-        mAuth=FirebaseAuth.getInstance();
-
-
-        //NOS REDIRECCIONA RECUPERAR CONTRASEÑA
+        //BOTON QUE NOS REDIRECCIONA A RECUPERAR CONTRASEÑA - ACTIVIDAD: RECUPERARPASSWORD_ACTIVITY
         mButtonOlvidoContraseña.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RecuperarPassword.class));
+                startActivity(new Intent(getApplicationContext(), RecuperarPassword_Acticity.class));
             }
         });
-        //NOS REDIRECCIONA A REGISTRO DE NUEVO USUARIO
+        //BOTON QUE NOS REDIRECCIONA A REGISTRAR USUARIO - ACTIVIDAD: REGISTERUSER_ACTIVITY
         mButtonCuentaNueva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterUserActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterUser_Acticity.class));
             }
         });
-
+        //BOTON ENTRAR QUE REDIRECCIONARA A HOME - ACTIVIDAD: HOME_ACTIVITY
         mButtonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,31 +76,37 @@ public class LoginActivity extends AppCompatActivity {
                 if(!Correo.isEmpty()){
                     if(!Contraseña.isEmpty()){
                         if(Contraseña.length()>=6){
+                            //MOSTRAMOS EL CARGA DE ESPERA
                             mDialogo.show();
+                            //LLAMAMOS AL METODO LOGINUSER();
                             LoginUser();
                         }else{
-                            Toast.makeText(LoginActivity.this, "El password debe tener contener 6 caracteres", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login_Acticity.this, "El password debe tener contener 6 caracteres", Toast.LENGTH_LONG).show();
                         }
                     }else{
-                        Toast.makeText(LoginActivity.this, "Ingrese su contraseña", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login_Acticity.this, "Ingrese su contraseña", Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(LoginActivity.this, "Ingrese su correo electronico", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login_Acticity.this, "Ingrese su correo electronico", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
+    //CREAMOS EL METODO LOGINUSER(); PARA ENTRAR AL SISTEMA
     private void LoginUser(){
+        //IDENTIFICACION CON EMAILANDPASSWOD Y LE PASAMOS LAS VARIABLES CORREO Y CONTRASEÑA
         mAuth.signInWithEmailAndPassword(Correo,Contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                //SI LA TAREA ES EXITOSA NOS LLEGA A HOME_ACTIVITY Y TERMINA EL PROCESO DE LOGIN
             if(task.isSuccessful()){
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), Home_Acticity.class));
                 finish();
-                Toast.makeText(LoginActivity.this, "Usuario Valido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login_Acticity.this, "Usuario Valido", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(LoginActivity.this, "Nose Pudo Iniciar Sesion Compruebe los Datos", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login_Acticity.this, "Nose Pudo Iniciar Sesion Compruebe los Datos", Toast.LENGTH_LONG).show();
             }
+            //CERRAMOS EL MENSAJE CARGA
                 mDialogo.dismiss();
             }
         });

@@ -23,26 +23,22 @@ public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.FotosVie
 
     List<Galeria> galeriaList;
     Context context;
-
     public GaleriaAdapter(List<Galeria> galeriaList, Context context) {
         this.galeriaList = galeriaList;
         this.context = context;
     }
-
     @NonNull
     @Override
     public FotosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_galeria,parent,false);
         FotosViewHolder holder = new FotosViewHolder(v);
-
         return holder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull final FotosViewHolder holder, int position) {
         Galeria gal= galeriaList.get(position);
 
-        holder.tv_titulo.setText(gal.getTitulo());
+        holder.tv_titulo.setText(gal.getNombre());
         Picasso.with(context).load(gal.getFoto()).into(holder.img_foto, new Callback() {
             @Override
             public void onSuccess() {

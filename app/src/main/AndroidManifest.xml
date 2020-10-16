@@ -11,17 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Actividades.VerGaleriaActivity"></activity>
-        <activity android:name=".SubirFoto">
+        <activity android:name=".PerfilUser_Acticity"></activity>
+        <activity android:name=".Actividades.VerGaleriaActivity" />
+        <activity android:name=".SubirFoto" />
+        <activity android:name=".RecuperarPassword_Acticity" />
+        <activity android:name=".RegisterUser_Acticity" />
+        <activity android:name=".Home_Acticity" />
+        <activity android:name=".Login_Acticity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".RecuperarPassword" />
-        <activity android:name=".RegisterUserActivity" />
-        <activity android:name=".HomeActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

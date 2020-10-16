@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fondo_de_pantalla"
-    tools:context=".RegisterUserActivity">
+    tools:context=".RegisterUser_Acticity">
 
     <LinearLayout
         android:layout_width="match_parent"

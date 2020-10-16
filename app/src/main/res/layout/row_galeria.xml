@@ -15,25 +15,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
                 android:id="@+id/tv_titulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                ></TextView>
-
+                />
             <ProgressBar
                 android:id="@+id/progress_bar_galeria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"></ProgressBar>
-            
+                android:layout_gravity="center"/>
+
+
             <ImageView
                 android:visibility="gone"
                 android:id="@+id/img_foto"
-                android:layout_width="123dp"
-                android:layout_height="123dp">
-            </ImageView>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
 
 
         </LinearLayout>

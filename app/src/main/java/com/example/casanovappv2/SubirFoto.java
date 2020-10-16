@@ -42,21 +42,25 @@ import id.zelory.compressor.Compressor;
 public class SubirFoto extends AppCompatActivity {
     EditText titulo;
     ImageView foto;
-    Button subir, seleccionar,vergaleria;
+    Button subir, seleccionar, vergaleria;
     DatabaseReference imgref;
     StorageReference storageReference;
     ProgressDialog cargando;
     Bitmap thumb_bitmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subir_foto);
+
         foto = findViewById(R.id.img_foto);
         seleccionar = findViewById(R.id.btn_selefoto);
         subir = findViewById(R.id.btn_subirfoto);
         vergaleria = (Button) findViewById(R.id.btn_verGaleria);
         titulo = findViewById(R.id.et_titulo);
+        //CREA EL NOTO
         imgref = FirebaseDatabase.getInstance().getReference().child("Fotos_subidas");
+        //CREA LA CARPETA EN STORE
         storageReference = FirebaseStorage.getInstance().getReference().child("img_comprimidas");
         cargando = new ProgressDialog(this);
 
@@ -80,20 +84,18 @@ public class SubirFoto extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK){
-            Uri imageuri = CropImage.getPickImageResultUri(this,data);
-
+        if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Uri imageuri = CropImage.getPickImageResultUri(this, data);
             //Recortar Imagen..
-
             CropImage.activity(imageuri)
                     .setGuidelines(CropImageView.Guidelines.ON)
-                    .setRequestedSize(640,480)
-                    .setAspectRatio(2,1).start(SubirFoto.this);
+                    .setRequestedSize(640, 640)
+                    .setAspectRatio(2, 1).start(SubirFoto.this);
         }
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
-            CropImage.ActivityResult result= CropImage.getActivityResult(data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-            if (resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
 
                 File url = new File(resultUri.getPath());
@@ -102,28 +104,30 @@ public class SubirFoto extends AppCompatActivity {
                 //comprimiendo imagen
 
                 try {
-                    thumb_bitmap= new Compressor(this)
+                    thumb_bitmap = new Compressor(this)
                             .setMaxWidth(640)
-                            .setMaxHeight(480)
+                            .setMaxHeight(640)
                             .compressToBitmap(url);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                thumb_bitmap.compress(Bitmap.CompressFormat.JPEG,90,byteArrayOutputStream);
-                final byte [] thumb_byte = byteArrayOutputStream.toByteArray();
+                thumb_bitmap.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
+                final byte[] thumb_byte = byteArrayOutputStream.toByteArray();
 
                 // Fin del Compresor.....
 
-                int p = (int) (Math.random() * 25 + 1 );int s =(int) (Math.random() * 25 + 1 );
-                int t = (int) (Math.random() * 25 + 1 );int c =(int) (Math.random() * 25 + 1 );
+                int p = (int) (Math.random() * 25 + 1);
+                int s = (int) (Math.random() * 25 + 1);
+                int t = (int) (Math.random() * 25 + 1);
+                int c = (int) (Math.random() * 25 + 1);
                 int numero1 = (int) (Math.random() * 1012 + 2111);
                 int numero2 = (int) (Math.random() * 1012 + 2111);
 
-                String[] elementos = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n",
-                        "o","p","q","r","s","u","v","w","x","y","z"};
+                String[] elementos = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+                        "o", "p", "q", "r", "s", "u", "v", "w", "x", "y", "z"};
 
-                final String aleatorio   = elementos[p] + elementos[s] +
+                final String aleatorio = elementos[p] + elementos[s] +
                         numero1 + elementos[t] + elementos[c] + numero2 + "comprimido.jpg";
 
                 subir.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +146,7 @@ public class SubirFoto extends AppCompatActivity {
                             @Override
                             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
 
-                                if (!task.isSuccessful()){
+                                if (!task.isSuccessful()) {
                                     throw Objects.requireNonNull(task.getException());
                                 }
 
@@ -155,23 +159,18 @@ public class SubirFoto extends AppCompatActivity {
 
                                 String titulo_string = titulo.getText().toString();
 
-                                Galeria gal = new Galeria(titulo_string,downloaduri.toString());
+                                Galeria gal = new Galeria(titulo_string, downloaduri.toString());
 
                                 imgref.push().setValue(gal);
-
                                 cargando.dismiss();
-
                                 Toast.makeText(SubirFoto.this, "Imagen cargada con exito", Toast.LENGTH_SHORT).show();
                             }
                         });
-
                     }
                 });
-
             }
         }
     }
-
 }
 
 

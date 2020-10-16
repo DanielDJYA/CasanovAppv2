@@ -14,12 +14,27 @@
         android:src="@drawable/logo"
         />
 
-    <TextView
-        android:id="@+id/adada"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:text="Bienvenido: Daniel Josue Yañez Agurto "
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        >
+        <TextView
+            android:id="@+id/mBienvenido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Bienvenido: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <TextView
+            android:id="@+id/mTextViewNombresYApellidos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nombre nombre apellido apellido"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+    </LinearLayout>
 
 </LinearLayout>

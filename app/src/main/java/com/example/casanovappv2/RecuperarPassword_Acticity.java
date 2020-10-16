@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,51 +18,66 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import dmax.dialog.SpotsDialog;
 
-public class RecuperarPassword extends AppCompatActivity {
+public class RecuperarPassword_Acticity extends AppCompatActivity {
+    //LLAMAMOS A LOS COMPONENTES DE XML ACTIVITY_LOGIN
     private EditText mEditTextCorreo;
+    //CREAMOS LAS VARIABLES DE LOS DATOS
     private Button mButtonEntrar;
     private String correo;
-    //MENSAJE DE CARGA
+    //MENSAJE DE CARGA A LA HORA DE ENTRAR AL SISTEMA
     private AlertDialog mDialogo;
+    //CREAMOS VARIABLES DE FIREBASE: AUTH
     private FirebaseAuth mAuth;
-    private FirebaseDatabase mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //HACEMOS REFERENCIAS A LOS COMPONENTES DE ACTIVITY_LOGIN.XML
         setContentView(R.layout.activity_recuperar_password);
         mEditTextCorreo=(EditText)findViewById(R.id.mEditTextCorreo);
         mEditTextCorreo.requestFocus();
         mButtonEntrar=(Button)findViewById(R.id.mButtonEntrar);
-        //CARGA DE ESPERA PERSONALIZADA BY DANIEL
+        //HACEMOS REFERENCIA A FIREBASE: AUTH
+        mAuth=FirebaseAuth.getInstance();
+        //PERSONALIZAMOS CARGA - CARGA DE ESPERA PERSONALIZADA BY:DANIEL
         mDialogo= new SpotsDialog.Builder()
                 .setContext(this)
                 .setMessage("Espere un Momento")
                 .setCancelable(false).build();
-        mAuth=FirebaseAuth.getInstance();
+        //BOTON QUE NOS ENVIARA UN MENSAJE A NUESTRO CORREO PARA CAMBIAR CONTRASEÑA
         mButtonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //EXTRAMOS EL DATO A LA VARIABLE CORREO
                 correo=mEditTextCorreo.getText().toString();
+                //VERIFICAMOS QUE EL CAMPO CORREO ESTE LLENO
                 if(!correo.isEmpty()){
+                    //MOSTRAMOS EL CARGA DE ESPERA
                     mDialogo.show();
-                    resetPassword();
+                    //LLAMAMOS AL METODO RECUPERARCONTRASEÑA();
+                    RecuperarContraseña();
                 }else{
-                    Toast.makeText(RecuperarPassword.this, "Ingrese su correo electronico", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RecuperarPassword_Acticity.this, "Ingrese su correo electronico", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    public void resetPassword(){
+    //CREAMOS EL METODO RecuperarContraseña(); PARA ENTRAR AL SISTEMA
+    public void RecuperarContraseña(){
+        //LE DECIMOS QUE EL MENSAJE QUE ENVIE A NUESTRO CORREO SERA EN ESPÑAOL - ES
         mAuth.setLanguageCode("es");
+        //ENVIAMOS EL MENSAJE A NUESTRO CORREO
         mAuth.sendPasswordResetEmail(correo).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                //VERIFICAMOS QUE LA TAREA REALIZADA SEA EXITOSA
                 if(task.isSuccessful()){
-                    startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-                    Toast.makeText(RecuperarPassword.this, "Se ah enviado un correo para restablecer su contraseña, verifique su Correo", Toast.LENGTH_LONG).show();
+                    //REDIRECCIONAMOS AL LOGIN_ACTIVITY CUANDO LA TAREA ES EXITOSA
+                    startActivity(new Intent(getApplicationContext(), Login_Acticity.class));
+                    Toast.makeText(RecuperarPassword_Acticity.this, "Se ah enviado un correo para restablecer su contraseña, verifique su Correo", Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(RecuperarPassword.this, "El Correo es Invalido", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RecuperarPassword_Acticity.this, "El Correo es Invalido", Toast.LENGTH_LONG).show();
                 }
+                //CERRAMOS EL MENSAJE CARGA
                 mDialogo.dismiss();
             }
         });

@@ -24,8 +24,6 @@ public class VerGaleriaActivity extends AppCompatActivity {
     ArrayList<Galeria> galeriaArrayList;
     LinearLayoutManager mLayautManager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

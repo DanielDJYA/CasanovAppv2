@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_de_pantalla"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".Login_Acticity">
 
     <TextView
         android:id="@+id/logo"
@@ -39,6 +39,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:hint="@string/ingreseCorreo"
+            android:text="yanez.31.12.98@gmail.com"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:textColor="@color/negro"
@@ -55,6 +56,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/bg_ripple_campos"
             android:hint="@string/ingresePassword"
+            android:text="123456"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textColor="@color/negro"

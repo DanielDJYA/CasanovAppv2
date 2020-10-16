@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:background="@drawable/fondo_de_pantalla"
     tools:context=".HomeActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

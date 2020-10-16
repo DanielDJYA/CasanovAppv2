@@ -33,7 +33,6 @@
                 android:id="@+id/img_foto"
                 android:layout_width="123dp"
                 android:layout_height="123dp">
-
             </ImageView>
 
 

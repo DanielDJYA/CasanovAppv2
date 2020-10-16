@@ -4,6 +4,8 @@
     <string name="login">Login</string>
     <string name="registrarUsuario">Registrar Usuario</string>
     <string name="restablecerContraseña">Restablecer Contraseña</string>
+    <string name="restablecerContraseña_contenido">Se le enviara un mensaje a su correo electronico donde podra reestrablecer su contraseña</string>
+
     <string name="yaTengoCuenta">Ya tengo una Cuenta</string>
 
 

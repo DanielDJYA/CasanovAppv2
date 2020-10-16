@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.casanovappv2.Adapters.HabitacionesAdapter;
 /*import com.example.casanovappv2.Adapters.UsuariosAdapter;*/
@@ -28,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class Home_Acticity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,6 +52,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
     //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +68,8 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //LLAMAMOS A NAV_HEADER_MAIN.XML PARA EXTRAER SUS COMPONENTES Y HACER REFERENCIA
-        View headerLayout=navigationView.getHeaderView(0);
-        mTextViewNombresYApellidos=(TextView) headerLayout.findViewById(R.id.mTextViewNombresYApellidos);
+        View headerLayout = navigationView.getHeaderView(0);
+        mTextViewNombresYApellidos = (TextView) headerLayout.findViewById(R.id.mTextViewNombresYApellidos);
         //HACEMOS REFERENCIAS A LOS COMPONENTES DE ACTIVITY_HOME.XML
         recyclerViewHabitaciones = (RecyclerView) findViewById(R.id.recyclerViewHabitaciones);
         recyclerViewHabitaciones.setLayoutManager(new LinearLayoutManager(this));
@@ -76,6 +81,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
         //LLAMAMOS A LOS DATOS DE NOMBRE Y APELLIDOS DEL USUARIO
         getUserInfo();
     }
+
     //EL MENU LATERAL IZQUIERDO
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -90,21 +96,46 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
             case R.id.nav_reserva:
                 //startActivity(new Intent(this, Intenciones.class));
                 break;
-            case R.id.nav_nosotros:
-                //startActivity(new Intent(this, Comunicacion1.class));
+            case R.id.nav_whsp:
+                PackageManager packageManager = this.getPackageManager();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                try {
+                    String url = "https://api.whatsapp.com/send?phone=" + "+51922912312" + "&text="
+                            + URLEncoder.encode("Hola que tal, quisiera hacer una reserva de habitacion por este medio.", "UTF-8");
+                    i.setPackage("com.whatsapp");
+                    i.setData(Uri.parse(url));
+                    if (i.resolveActivity(packageManager) != null) {
+                        this.startActivity(i);
+                    }
+                    else {
+                        Toast.makeText(this, "No tiene Whatsapp porfavor instale la app", Toast.LENGTH_LONG).show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
-            case R.id.nav_compartir:
-                Intent paramView;
-                paramView = new Intent("android.intent.action.SEND");
-                paramView.setType("text/plain");
-                paramView.putExtra("android.intent.extra.TEXT", "Descarga nuestra app de la PlayStore" +
-                        " \n" + "https://play.google.com/store/apps/details?id=app.product.demarktec.alo14_pasajero");
-                startActivity(Intent.createChooser(paramView, "Comparte Nuestro aplicativo"));
+            case R.id.nav_nosotros:
                 break;
             case R.id.nav_cerrar_sesion:
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(), Login_Acticity.class));
                 finish();
+                break;
+            case R.id.nav_Facebook:
+                break;
+            case R.id.nav_WhatsApp:
+                break;
+            case R.id.nav_Instangram:
+                break;
+            case R.id.nav_LLamar:
+                break;
+            case R.id.nav_Compartir:
+                Intent paramView;
+                paramView = new Intent("android.intent.action.SEND");
+                paramView.setType("text/plain");
+                paramView.putExtra("android.intent.extra.TEXT", "Descarga nuestra app CasanovApp de la PlayStore" +
+                        " \n" + "https://play.google.com/store/apps/details?id=app.product.demarktec.alo14_pasajero");
+                startActivity(Intent.createChooser(paramView, "Comparte Nuestro nuevo Aplicativo"));
                 break;
             default:
                 break;
@@ -139,13 +170,14 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
                     recyclerViewHabitaciones.setAdapter(mAdapterHabitaciones);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
 
-private void getUserInfo() {
+    private void getUserInfo() {
         String Id = mAuth.getCurrentUser().getUid();
         mDatabase.child("Usuarios").child(Id).addValueEventListener(new ValueEventListener() {
             @Override
@@ -153,14 +185,16 @@ private void getUserInfo() {
                 if (snapshot.exists()) {
                     NombresUsu = snapshot.child("Nombres").getValue().toString();
                     ApellidosUsu = snapshot.child("Apellidos").getValue().toString();
-                    mTextViewNombresYApellidos.setText(NombresUsu+" "+ApellidosUsu);
+                    mTextViewNombresYApellidos.setText(NombresUsu + " " + ApellidosUsu);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-    }}
+    }
+}
 
 //LISTAR USUARIOS
     /*private void ListarUsuarios(){

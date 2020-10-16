@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_perfil"
+            android:icon="@drawable/ic_usuario"
             android:title="Perfil" />
         <item android:id="@+id/nav_habitacion"
             android:icon="@drawable/ic_habitacion"
@@ -9,18 +9,39 @@
         <item android:id="@+id/nav_reserva"
             android:icon="@drawable/ic_reserva"
             android:title="Reserva" />
+        <item android:id="@+id/nav_whsp"
+            android:icon="@drawable/ic_mobile_payment"
+            android:title="Reservar por Whsp" />
         <item android:id="@+id/nav_nosotros"
-            android:icon="@drawable/ic_nosostros"
+            android:icon="@drawable/ic_hotel"
             android:title="Acerca de Nostros" />
+        <item android:id="@+id/nav_cerrar_sesion"
+            android:icon="@drawable/ic_cerrar_sesion"
+            android:title="Cerrar Sesion" />
     </group>
-    <item android:title="Acciones adicionales">
+    <item android:title="Nuestras Redes Sociales">
         <menu>
-            <item android:id="@+id/nav_compartir"
-                android:icon="@drawable/ic_compartir"
-                android:title="Compartir APP" />
-            <item android:id="@+id/nav_cerrar_sesion"
-                android:icon="@drawable/ic_cerrar_sesion"
-                android:title="Cerrar Sesion" />
+            <item android:id="@+id/nav_Facebook"
+                android:icon="@drawable/ic_facebook"
+                android:title="Facebook" />
+            <item android:id="@+id/nav_WhatsApp"
+                android:icon="@drawable/ic_whatsapp"
+                android:title="WhatsApp" />
+            <item android:id="@+id/nav_Instangram"
+                android:icon="@drawable/ic_instagram"
+                android:title="Instangram" />
+
         </menu>
     </item>
+    <item android:title="Otros">
+        <menu>
+            <item android:id="@+id/nav_LLamar"
+                android:icon="@drawable/ic_llamar"
+                android:title="LLamar a Hotel" />
+            <item android:id="@+id/nav_Compartir"
+                android:icon="@drawable/ic_compartir"
+                android:title="Compartir App" />
+        </menu>
+    </item>
+
 </menu>

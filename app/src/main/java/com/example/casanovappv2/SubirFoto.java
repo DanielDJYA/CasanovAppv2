@@ -47,7 +47,6 @@ public class SubirFoto extends AppCompatActivity {
     StorageReference storageReference;
     ProgressDialog cargando;
     Bitmap thumb_bitmap;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

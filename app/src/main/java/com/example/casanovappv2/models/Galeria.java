@@ -1,8 +1,12 @@
 package com.example.casanovappv2.models;
 
 public class Galeria {
-    String titulo;
-    String foto;
+    private String titulo;
+    private String foto;
+
+    public Galeria() {
+
+    }
 
     public Galeria(String titulo, String foto) {
         this.titulo = titulo;

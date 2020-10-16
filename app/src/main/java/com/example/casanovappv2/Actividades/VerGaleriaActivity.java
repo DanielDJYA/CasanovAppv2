@@ -31,7 +31,7 @@ public class VerGaleriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_galeria);
 
-        mLayautManager = new LinearLayoutManager(getApplicationContext());
+        mLayautManager = new LinearLayoutManager(this);
         mLayautManager.setReverseLayout(true);
         mLayautManager.setStackFromEnd(true);
         rv_galeria = findViewById(R.id.rv);

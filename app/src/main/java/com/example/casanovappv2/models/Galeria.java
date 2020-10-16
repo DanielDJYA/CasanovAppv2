@@ -4,9 +4,6 @@ public class Galeria {
     String titulo;
     String foto;
 
-    public Galeria() {
-    }
-
     public Galeria(String titulo, String foto) {
         this.titulo = titulo;
         this.foto = foto;

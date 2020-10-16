@@ -24,7 +24,7 @@ import java.util.Map;
 import dmax.dialog.SpotsDialog;
 
 public class RegisterUser_Acticity extends AppCompatActivity {
-    //LLAMAMOS A LOS COMPONENTES DE XML
+    //LLAMAMOS A LOS COMPONENTES DE XML ACTIVITY_REGISTER_USER.XML
     private EditText mEditTextNombres;
     private EditText mEditTextApellidos;
     private EditText mEditTextNDni;
@@ -44,7 +44,7 @@ public class RegisterUser_Acticity extends AppCompatActivity {
     private String Correo;
     private String Contraseña;
     private String ConfirmarContraseña;
-    //MENSAJE DE CARGA
+    //MENSAJE DE CARGA A LA HORA DE REGISTRAR USUARIO
     private AlertDialog mDialogo;
     //CREAMOS VARIABLES DE FIREBASE: AUTH Y DATABASE
     FirebaseAuth mAuth;
@@ -54,7 +54,7 @@ public class RegisterUser_Acticity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
-        //INSTANCIAMOS LOS ELEMENTOS DE XML
+        //HACEMOS REFERENCIAS A LOS COMPONENTES DE ACTIVITY_REGISTER_USER.XML
         mEditTextNombres = (EditText) findViewById(R.id.mEditTextNombres);
         mEditTextNombres.requestFocus();
         mEditTextApellidos = (EditText) findViewById(R.id.mEditTextApellidos);
@@ -66,27 +66,26 @@ public class RegisterUser_Acticity extends AppCompatActivity {
         mEditTextConfirmarContraseña = (EditText) findViewById(R.id.mEditTextConfirmarContraseña);
         mButtonRegistrarUsuario = (Button) findViewById(R.id.mButtonRegistrarUsuario);
         mButtonLogin = (Button) findViewById(R.id.mButtonLogin);
-        //CARGA DE ESPERA PERSONALIZADA BY DANIEL
+        //HACEMOS REFERENCIA A FIREBASE: AUTH Y DATABASE
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        //PERSONALIZAMOS CARGA - CARGA DE ESPERA PERSONALIZADA BY:DANIEL
         mDialogo = new SpotsDialog.Builder()
                 .setContext(this)
                 .setMessage("Espere un Momento")
                 .setCancelable(false).build();
-        //INSTANCIAMOS LOS ELEMENTOS DE FIREBASE
-        mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        //CREAMOS EL EVENTO IR LOGIN
+        //BOTON QUE NOS ENVIARA AL LOGIN CUANDO YA TENEMOS CUENTA
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Login_Acticity.class));
-                // no tendra retorno al registro usuario finish();
             }
         });
-        //CREAMOS EL EVENTO REGISTRO DE USUARIO
+        //BOTON QUE NOS ENVIARA AL HOME_ACTIVITY.XML UNA VEZ REGISTRADO LOS DATOS
         mButtonRegistrarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //UTILIZAMOS LAS VARIABLES CREADAS PARA INSERTAR LOS DATOS
+                //LLAMAMOS LAS VARIABLES CREADAS PARA INSERTAR LOS DATOS
                 Nombres = mEditTextNombres.getText().toString();
                 Apellidos = mEditTextApellidos.getText().toString();
                 NDni = mEditTextNDni.getText().toString();
@@ -108,8 +107,9 @@ public class RegisterUser_Acticity extends AppCompatActivity {
                                                     if (Contraseña.length() >= 6) {
                                                         if (!ConfirmarContraseña.isEmpty()) {
                                                             if (Contraseña.equals(ConfirmarContraseña)) {
+                                                                //MOSTRAMOS EL CARGA DE ESPERA
                                                                 mDialogo.show();
-
+                                                                //LLAMAMOS AL METODO REGISTERUSER();
                                                                 RegisterUser();
                                                             } else {
                                                                 Toast.makeText(RegisterUser_Acticity.this, "Las Contraseñas no Coinciden", Toast.LENGTH_SHORT).show();
@@ -151,13 +151,11 @@ public class RegisterUser_Acticity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
-    //CREAMOS EL METODO REGISTERUSER QUE SERA PARA CREAR USER
+    //CREAMOS EL METODO REGISTERUSER - CREAR USUARIO NUEVO
     private void RegisterUser() {
-        //LE ENVIAMOS EL CORREO Y CONTRASEÑA
+        //IDENTIFICACION CON EMAILANDPASSWOD Y LE PASAMOS LAS VARIABLES CORREO Y CONTRASEÑA
         mAuth.createUserWithEmailAndPassword(Correo, Contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -174,15 +172,14 @@ public class RegisterUser_Acticity extends AppCompatActivity {
                     userMap.put("Contraseña", Contraseña);
                     //OBTENER EL INDENTIFICADOR DE CADA USUARIO
                     String id = mAuth.getCurrentUser().getUid();
-                    //CREAMOS LA TABAL USUARIOS Y COLOCALOS EL IDENTIFICADOR,
-                    // Y POR ULTIMO ENVIAMOS LOS CAMPOS Y DATOS INSETADOS
+                    //CREAMOS EL NODO USUARIOS - LE ASIGNAMOS UN ID Y GUARDAMOS TODOS LOS DATOS EN USERMAP
                     mDatabase.child("Usuarios").child(id).setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         //CAMBIAMOS EL TASK A TASK2 PARA QUE NO HAYA PROBLEMAS A LA HORA DE VERIFICAR LAS TAREAS
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             //CCOMPROBAMOS SI LA TAREA2 TASK2 FUE EXISTOSA
                             if (task2.isSuccessful()) {
-                                //ENVIAMOS AL PERFILUSER
+                                //ENVIAMOS AL ACTIVITY_HOME.XML
                                 startActivity(new Intent(getApplicationContext(), Home_Acticity.class));
                                 //TERMINAMOS LA ACCION
                                 finish();

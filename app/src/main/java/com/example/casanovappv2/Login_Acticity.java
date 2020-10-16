@@ -20,17 +20,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import dmax.dialog.SpotsDialog;
 
 public class Login_Acticity extends AppCompatActivity {
-    //LLAMAMOS A LOS COMPONENTES DE XML ACTIVITY_LOGIN
+    //LLAMAMOS A LOS COMPONENTES DE XML ACTIVITY_LOGIN.XML
     private EditText mEditTextCorreo;
     private EditText mEditTextContraseña;
     private  Button mButtonEntrar;
     private Button mButtonOlvidoContraseña;
     private Button mButtonCuentaNueva;
-    //MENSAJE DE CARGA A LA HORA DE ENTRAR AL SISTEMA
-    private AlertDialog mDialogo;
     //CREAMOS LAS VARIABLES DE LOS DATOS
     private String Correo;
     private String Contraseña;
+    //MENSAJE DE CARGA A LA HORA DE ENTRAR AL SISTEMA
+    private AlertDialog mDialogo;
     //CREAMOS VARIABLES DE FIREBASE: AUTH
     FirebaseAuth mAuth;
     @Override

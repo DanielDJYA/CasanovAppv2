@@ -19,19 +19,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import dmax.dialog.SpotsDialog;
 
 public class RecuperarPassword_Acticity extends AppCompatActivity {
-    //LLAMAMOS A LOS COMPONENTES DE XML ACTIVITY_LOGIN
+    //LLAMAMOS A LOS COMPONENTES DE XML ACTIVITY_RECUPERAR_PASSWORD.XML
     private EditText mEditTextCorreo;
     //CREAMOS LAS VARIABLES DE LOS DATOS
     private Button mButtonEntrar;
     private String correo;
-    //MENSAJE DE CARGA A LA HORA DE ENTRAR AL SISTEMA
+    //MENSAJE DE CARGA A LA HORA DE ENVIAR MENSAJE AL CORREO
     private AlertDialog mDialogo;
     //CREAMOS VARIABLES DE FIREBASE: AUTH
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //HACEMOS REFERENCIAS A LOS COMPONENTES DE ACTIVITY_LOGIN.XML
+        //HACEMOS REFERENCIAS A LOS COMPONENTES DE ACTIVITY_RECUPERAR_PASSWORD.XML
         setContentView(R.layout.activity_recuperar_password);
         mEditTextCorreo=(EditText)findViewById(R.id.mEditTextCorreo);
         mEditTextCorreo.requestFocus();

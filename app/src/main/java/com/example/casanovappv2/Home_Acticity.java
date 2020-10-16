@@ -100,7 +100,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
                 PackageManager packageManager = this.getPackageManager();
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 try {
-                    String url = "https://api.whatsapp.com/send?phone=" + "+51922912312" + "&text="
+                    String url = "https://api.whatsapp.com/send?phone=" + "+51912359735" + "&text="
                             + URLEncoder.encode("Hola que tal, quisiera hacer una reserva de habitacion por este medio.", "UTF-8");
                     i.setPackage("com.whatsapp");
                     i.setData(Uri.parse(url));
@@ -122,12 +122,24 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
                 finish();
                 break;
             case R.id.nav_Facebook:
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://developer.android.com/guide/components/intents-common?hl=es-419"));
+                startActivity(intent);
                 break;
             case R.id.nav_WhatsApp:
+                Intent intent2 = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://developer.android.com/guide/components/intents-common?hl=es-419"));
+                startActivity(intent2);
                 break;
             case R.id.nav_Instangram:
+                Intent intent3 = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://developer.android.com/guide/components/intents-common?hl=es-419"));
+                startActivity(intent3);
                 break;
             case R.id.nav_LLamar:
+                Intent intent4 = new Intent(Intent.ACTION_DIAL,
+                        Uri.parse("tel:922912312"));
+                startActivity(intent4);
                 break;
             case R.id.nav_Compartir:
                 Intent paramView;
@@ -185,6 +197,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
                 if (snapshot.exists()) {
                     NombresUsu = snapshot.child("Nombres").getValue().toString();
                     ApellidosUsu = snapshot.child("Apellidos").getValue().toString();
+
                     mTextViewNombresYApellidos.setText(NombresUsu + " " + ApellidosUsu);
                 }
             }

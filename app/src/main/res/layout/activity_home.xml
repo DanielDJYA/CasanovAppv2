@@ -6,15 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo_de_pantalla"
     tools:context=".Home_Acticity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:minHeight="?attr/actionBarSize"
-        android:background="@color/rosado_rojo"
+        android:background="@drawable/fondo_1"
         app:titleTextColor="@color/blanco"
         tools:ignore="MissingConstraints" />
     <TextView
@@ -26,7 +25,7 @@
         android:layout_marginBottom="10dp"
         android:textStyle="bold"
         android:textSize="40dp"
-        android:textColor="@color/rosado_rojo"
+        android:textColor="@color/teal"
         />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHabitaciones"

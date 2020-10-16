@@ -2,7 +2,7 @@
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_perfil"
             android:icon="@drawable/ic_usuario"
-            android:title="Perfil" />
+            android:title="Perfil de Usuario" />
         <item android:id="@+id/nav_habitacion"
             android:icon="@drawable/ic_habitacion"
             android:title="Habitaciones" />
@@ -11,7 +11,7 @@
             android:title="Reserva" />
         <item android:id="@+id/nav_whsp"
             android:icon="@drawable/ic_mobile_payment"
-            android:title="Reservar por Whsp" />
+            android:title="Reservar por WhatsApp" />
         <item android:id="@+id/nav_nosotros"
             android:icon="@drawable/ic_hotel"
             android:title="Acerca de Nostros" />

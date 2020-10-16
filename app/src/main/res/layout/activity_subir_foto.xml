@@ -23,7 +23,7 @@
         android:layout_margin="10dp"
         android:textColor="@color/blanco"
         android:text="Seleccionar Foto"
-        android:background="@color/rosado_rojo"
+        android:background="@color/pink"
         ></Button>
     <ImageView
         android:id="@+id/img_foto"

@@ -31,17 +31,17 @@ public class VerGaleriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_galeria);
 
-        mLayautManager = new LinearLayoutManager(this);
+        mLayautManager = new LinearLayoutManager(getApplicationContext());
         mLayautManager.setReverseLayout(true);
         mLayautManager.setStackFromEnd(true);
         rv_galeria = findViewById(R.id.rv);
         rv_galeria.setLayoutManager(mLayautManager);
 
         galeriaArrayList = new ArrayList<>();
-        adapter = new  GaleriaAdapter(galeriaArrayList,this);
+        adapter = new  GaleriaAdapter(galeriaArrayList,getApplicationContext());
         rv_galeria.setAdapter(adapter);
 
-        final FirebaseDatabase database =  FirebaseDatabase.getInstance();
+        FirebaseDatabase database =  FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Fotos_subidas");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -58,12 +58,7 @@ public class VerGaleriaActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
-
-
-
-    }// fin del oncreate!!!
+    }
 }

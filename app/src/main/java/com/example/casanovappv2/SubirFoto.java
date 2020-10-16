@@ -46,7 +46,7 @@ public class SubirFoto extends AppCompatActivity {
     DatabaseReference imgref;
     StorageReference storageReference;
     ProgressDialog cargando;
-    Bitmap thumb_bitmap = null;
+    Bitmap thumb_bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class SubirFoto extends AppCompatActivity {
         foto = findViewById(R.id.img_foto);
         seleccionar = findViewById(R.id.btn_selefoto);
         subir = findViewById(R.id.btn_subirfoto);
-        vergaleria = findViewById(R.id.btn_verGaleria);
+        vergaleria = (Button) findViewById(R.id.btn_verGaleria);
         titulo = findViewById(R.id.et_titulo);
         imgref = FirebaseDatabase.getInstance().getReference().child("Fotos_subidas");
         storageReference = FirebaseStorage.getInstance().getReference().child("img_comprimidas");

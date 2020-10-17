@@ -7,7 +7,6 @@
     android:background="@drawable/fondo_3_3"
     android:orientation="vertical"
     tools:context=".Login_Acticity">
-
     <TextView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
@@ -68,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@color/trasnparente"
+            android:background="@color/tranparente"
             android:gravity="center"
             android:text="@string/olvidarteTuContraseña"
             android:textColor="@color/blanco"
@@ -77,12 +76,12 @@
         <Button
             android:id="@+id/mButtonEntrar"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/color_btn_entrar"
+            android:background="@drawable/btn_azul1"
             android:text="@string/entrarSistema"
-            android:textColor="@drawable/texto_btn_uno"
+            android:textColor="@drawable/btn_bg_ripple_azul_texto1"
             android:textStyle="normal" />
 
         <Button
@@ -91,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@color/trasnparente"
+            android:background="@color/tranparente"
             android:gravity="center"
             android:text="@string/noTienesCuentaRegistrateAqui"
             android:textColor="@color/blanco"

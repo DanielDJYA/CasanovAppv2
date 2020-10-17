@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/indigo"
+    android:background="@color/azul"
     android:orientation="vertical"
     android:paddingTop="40dp"
     android:paddingBottom="5dp"

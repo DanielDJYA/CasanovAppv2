@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@color/blanco">
-    <item android:drawable="@drawable/bg_ripple_btn_dos_cancelar"/>
+    <item android:drawable="@drawable/btn_bg_ripple_azul1"/>
 </ripple>

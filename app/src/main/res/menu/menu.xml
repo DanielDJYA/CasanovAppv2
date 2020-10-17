@@ -30,7 +30,6 @@
             <item android:id="@+id/nav_Instangram"
                 android:icon="@drawable/ic_instagram"
                 android:title="Instangram" />
-
         </menu>
     </item>
     <item android:title="Otros">
@@ -43,5 +42,4 @@
                 android:title="Compartir App" />
         </menu>
     </item>
-
 </menu>

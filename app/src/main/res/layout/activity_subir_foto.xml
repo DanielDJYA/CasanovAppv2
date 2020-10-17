@@ -8,14 +8,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SubirFoto">
-
     <EditText
         android:id="@+id/et_titulo"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/titulo_de_la_foto"/>
-
     <Button
         android:id="@+id/btn_selefoto"
         android:layout_width="match_parent"
@@ -23,13 +21,12 @@
         android:layout_margin="10dp"
         android:textColor="@color/blanco"
         android:text="Seleccionar Foto"
-        android:background="@color/pink"
-        ></Button>
+        android:background="@color/rojo"
+        />
     <ImageView
         android:id="@+id/img_foto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ImageView>
-
+        android:layout_height="wrap_content"/>
     <Button
 
         android:id="@+id/btn_subirfoto"
@@ -39,8 +36,7 @@
         android:textColor="@color/blanco"
         android:text="Subir Foto"
         android:background="@color/negro"
-        ></Button>
-
+        />
     <Button
 
         android:id="@+id/btn_verGaleria"
@@ -50,6 +46,6 @@
         android:textColor="@color/blanco"
         android:text="Ver Galeria de Fotos"
         android:background="@color/negro"
-        ></Button>
+        />
 
 </LinearLayout>

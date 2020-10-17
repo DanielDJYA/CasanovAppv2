@@ -1,21 +1,16 @@
 <resources>
-    <string name="app_name">CasanovAppv2</string>
+    <string name="app_name">App Casanova</string>
 
     <string name="login">Login</string>
     <string name="registrarUsuario">Registrar Usuario</string>
     <string name="restablecerContraseña">Restablecer Contraseña</string>
     <string name="restablecerContraseña_contenido">Se le enviara un mensaje a su correo electronico donde podra reestrablecer su contraseña</string>
-
     <string name="yaTengoCuenta">Ya tengo una Cuenta</string>
-
-
     <string name="noTienesCuentaRegistrateAqui">No Tienes Cuenta? Registrate aquí</string>
     <string name="entrarSistema">Entrar</string>
     <string name="registrarNuevoUsuario">Registrarse</string>
     <string name="olvidarteTuContraseña">Olvistaste tu Contraseña?</string>
     <string name="enviarAlCorreoElectronico">Enviar al Correo Electronico</string>
-
-
     <string name="ingreseNombres">Ingrese Nombres</string>
     <string name="ingreseApellidos">Ingrese Apellidos</string>
     <string name="ingreseDNI">Ingrese DNI</string>
@@ -30,8 +25,6 @@
     <string name="reservar_ahora">Reservar Ahora</string>
     <string name="habitacion_doble">Habitacion Doble</string>
     <string name="titulo_de_la_foto">Titulo de la foto</string>
-
     <string name="drawer_open">abrir</string>
     <string name="drawer_close">cerrar</string>
-
 </resources>

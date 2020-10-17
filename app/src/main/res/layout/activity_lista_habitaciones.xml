@@ -34,7 +34,7 @@
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"
-                android:background="@color/fondorgb"
+                android:background="@color/rgb"
                 android:gravity="center"
                 android:text="S/"
                 android:textColor="@color/blanco"
@@ -45,7 +45,7 @@
                 android:layout_width="78dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
-                android:background="@color/fondorgb"
+                android:background="@color/rgb"
                 android:gravity="center"
                 android:text="50.00"
                 android:textColor="@color/blanco"
@@ -85,15 +85,7 @@ Conexion a Internet,
 Jacuzzy,
 Telefono en linea Directa,
 TV plasma satelital."
-                android:textSize="13sp" />
-
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="25dp"
-                android:layout_gravity="bottom|center"
-                android:background="@drawable/bg_ripple_btn_dos_cancelar"
-                android:text="Reservar"
-                android:textColor="@drawable/texto_btn_dos" />
+                android:textSize="10sp" />
         </LinearLayout>
     </LinearLayout>
 

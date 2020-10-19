@@ -27,4 +27,6 @@
     <string name="titulo_de_la_foto">Titulo de la foto</string>
     <string name="drawer_open">abrir</string>
     <string name="drawer_close">cerrar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

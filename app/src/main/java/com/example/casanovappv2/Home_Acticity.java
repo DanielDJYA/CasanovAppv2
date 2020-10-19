@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,13 +19,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.casanovappv2.Adapters.HabitacionesAdapter;
-/*import com.example.casanovappv2.Adapters.UsuariosAdapter;*/
 import com.example.casanovappv2.models.Habitaciones;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -88,7 +89,6 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_perfil:
-                startActivity(new Intent(this, PerfilUser_Acticity.class));
                 break;
             case R.id.nav_habitacion:
                 //startActivity(new Intent(this, Permisos.class));
@@ -106,8 +106,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
                     i.setData(Uri.parse(url));
                     if (i.resolveActivity(packageManager) != null) {
                         this.startActivity(i);
-                    }
-                    else {
+                    } else {
                         Toast.makeText(this, "No tiene Whatsapp porfavor instale la app", Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
@@ -155,8 +154,8 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
 
+    }
 
     //LISTAR HABITACIONES
     private void ListarHabitaciones() {

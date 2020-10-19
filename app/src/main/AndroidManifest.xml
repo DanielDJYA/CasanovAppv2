@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PerfilUser_Acticity"></activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".Actividades.VerGaleriaActivity" />
         <activity android:name=".SubirFoto" />
         <activity android:name=".RecuperarPassword_Acticity" />

@@ -89,6 +89,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_perfil:
+                startActivity(new Intent(getApplicationContext(),PerfilUser_Activity.class));
                 break;
             case R.id.nav_habitacion:
                 //startActivity(new Intent(this, Permisos.class));

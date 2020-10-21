@@ -8,11 +8,6 @@
     android:orientation="vertical"
     tools:context=".PerfilUser_Activity">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textSize="60sp"
-    android:text="HOLAA TEXT VIEW" />
 
     <TextView
         android:layout_width="match_parent"

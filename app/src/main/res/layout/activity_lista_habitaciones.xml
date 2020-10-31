@@ -21,36 +21,39 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp">
+            android:layout_marginEnd="10dp">
 
-            <TextView
+            <ImageView
                 android:layout_width="123dp"
                 android:layout_height="123dp"
+                android:src="@drawable/perfil_casanova"
+                android:contentDescription="@string/habitacion_nombre" />
 
-                android:background="@drawable/fondo_de_pantalla" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/rgb"
+                android:layout_gravity="bottom|center"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/mCosto"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|bottom"
-                android:background="@color/rgb"
-                android:gravity="center"
-                android:text="S/"
-                android:textColor="@color/blanco"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/mTextViewPrecio"
-                android:layout_width="78dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|bottom"
-                android:background="@color/rgb"
-                android:gravity="center"
-                android:text="50.00"
-                android:textColor="@color/blanco"
-                android:textStyle="bold"
-                android:textSize="30sp" />
+                <TextView
+                    android:id="@+id/mCosto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/habitacion_precio"
+                    android:textColor="@color/blanco"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/mTextViewPrecio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/habitacion_precio2"
+                    android:textColor="@color/blanco"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </FrameLayout>
 
@@ -64,14 +67,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Habitaciones"
+                android:text="@string/habitacion_nombre"
                 android:textSize="23sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Caracteristicas:"
+                android:text="@string/habitacion_caracteristicas"
                 android:textSize="15sp" />
 
             <TextView
@@ -79,15 +82,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
-                android:text="Aire acondicionado,
-Frigobar,
-Conexion a Internet,
-Jacuzzy,
-Telefono en linea Directa,
-TV plasma satelital."
-                android:textSize="10sp" />
+                android:text="@string/habitacion_descripcion"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
-
-
 </androidx.cardview.widget.CardView>

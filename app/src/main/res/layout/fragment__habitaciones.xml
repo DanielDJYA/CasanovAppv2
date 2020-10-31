@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/mtexto1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="holaaaaaaaa"
+        android:textSize="20sp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHabitaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

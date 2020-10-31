@@ -15,86 +15,92 @@
         android:layout_marginBottom="100dp"
         android:background="@drawable/logo" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/bg_ripple_contener_login"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login"
-            android:textColor="@color/blanco"
-            android:textSize="35sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-        <EditText
-            android:id="@+id/mEditTextCorreo"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="@string/ingreseCorreo"
-            android:text="yanez.31.12.98@gmail.com"
-            android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/negro"
-            android:textStyle="normal"
-            android:background="@drawable/bg_ripple_campos"
-            />
-
-        <EditText
-            android:id="@+id/mEditTextContraseña"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/bg_ripple_campos"
-            android:hint="@string/ingresePassword"
-            android:text="123456"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:textColor="@color/negro"
-            android:textStyle="normal" />
-
-        <Button
-            android:id="@+id/mButtonOlvidoContraseña"
+        >
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/tranparente"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_ripple_contener_login"
             android:gravity="center"
-            android:text="@string/olvidarteTuContraseña"
-            android:textColor="@color/blanco"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-        <Button
-            android:id="@+id/mButtonEntrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/btn_azul1"
-            android:text="@string/entrarSistema"
-            android:textColor="@drawable/btn_bg_ripple_azul_texto1"
-            android:textStyle="normal" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/mButtonCuentaNueva"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/tranparente"
-            android:gravity="center"
-            android:text="@string/noTienesCuentaRegistrateAqui"
-            android:textColor="@color/blanco"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textColor="@color/blanco"
+                android:textSize="35sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            <EditText
+                android:id="@+id/mEditTextCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="@string/ingreseCorreo"
+                android:text="yanez.31.12.98@gmail.com"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/negro"
+                android:textStyle="normal"
+                android:background="@drawable/bg_ripple_campos"
+                />
+
+            <EditText
+                android:id="@+id/mEditTextContraseña"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_ripple_campos"
+                android:hint="@string/ingresePassword"
+                android:text="123456"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:textColor="@color/negro"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/mButtonOlvidoContraseña"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/tranparente"
+                android:gravity="center"
+                android:text="@string/olvidarteTuContraseña"
+                android:textColor="@color/blanco"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/mButtonEntrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btn_azul1"
+                android:text="@string/entrarSistema"
+                android:textColor="@drawable/btn_bg_ripple_azul_texto1"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/mButtonCuentaNueva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/tranparente"
+                android:gravity="center"
+                android:text="@string/noTienesCuentaRegistrateAqui"
+                android:textColor="@color/blanco"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

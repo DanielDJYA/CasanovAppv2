@@ -54,28 +54,23 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
 
-
-    private DrawerLayout mDrawer;
-    private Toolbar toolbar;
-    private NavigationView nvDrawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.drawerlayout);
+        //LLAMAMOS Toolbar QUE ESTA EN ACTIVITY_HOME.XML
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        nvDrawer = (NavigationView) findViewById(R.id.nvView);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                mDrawer, toolbar, R.string.drawer_open, R.string.drawer_close);
-        mDrawer.addDrawerListener(toggle);
+        //LLAMAMOS A DRAWERLAYOUT.XML
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
-        nvDrawer.setNavigationItemSelectedListener(this);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         //LLAMAMOS A NAV_HEADER_MAIN.XML PARA EXTRAER SUS COMPONENTES Y HACER REFERENCIA
-        //View headerLayout = navigationView.getHeaderView(0);
-        //mTextViewNombresYApellidos = (TextView) headerLayout.findViewById(R.id.mTextViewNombresYApellidos);
-
+        View headerLayout = navigationView.getHeaderView(0);
+        mTextViewNombresYApellidos = (TextView) headerLayout.findViewById(R.id.mTextViewNombresYApellidos);
         //HACEMOS REFERENCIAS A LOS COMPONENTES DE ACTIVITY_HOME.XML
         recyclerViewHabitaciones = (RecyclerView) findViewById(R.id.recyclerViewHabitaciones);
         recyclerViewHabitaciones.setLayoutManager(new LinearLayoutManager(this));
@@ -83,7 +78,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         //LLAMAMOS A LA LISTA DE HABITACIONES
-        //ListarHabitaciones();
+        ListarHabitaciones();
         //LLAMAMOS A LOS DATOS DE NOMBRE Y APELLIDOS DEL USUARIO
         getUserInfo();
     }
@@ -93,7 +88,70 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
+            case R.id.nav_perfil:
+                startActivity(new Intent(getApplicationContext(),PerfilUser_Activity.class));
+                break;
+            case R.id.nav_habitacion:
+                //startActivity(new Intent(this, Permisos.class));
+                break;
+            case R.id.nav_reserva:
+                //startActivity(new Intent(this, Intenciones.class));
+                break;
+            case R.id.nav_whsp:
+                PackageManager packageManager = this.getPackageManager();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                try {
+                    String url = "https://api.whatsapp.com/send?phone=" + "+51912359735" + "&text="
+                            + URLEncoder.encode("Hola que tal, quisiera hacer una reserva de habitacion por este medio.", "UTF-8");
+                    i.setPackage("com.whatsapp");
+                    i.setData(Uri.parse(url));
+                    if (i.resolveActivity(packageManager) != null) {
+                        this.startActivity(i);
+                    } else {
+                        Toast.makeText(this, "No tiene Whatsapp porfavor instale la app", Toast.LENGTH_LONG).show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.nav_nosotros:
+                startActivity(new Intent(getApplicationContext(),Nosotros_Activity.class));
+                break;
+            case R.id.nav_cerrar_sesion:
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), Login_Acticity.class));
+                finish();
+                break;
+            case R.id.nav_Facebook:
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://developer.android.com/guide/components/intents-common?hl=es-419"));
+                startActivity(intent);
+                break;
+            case R.id.nav_WhatsApp:
+                Intent intent2 = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://developer.android.com/guide/components/intents-common?hl=es-419"));
+                startActivity(intent2);
+                break;
+            case R.id.nav_Instangram:
+                Intent intent3 = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://developer.android.com/guide/components/intents-common?hl=es-419"));
+                startActivity(intent3);
+                break;
+            case R.id.nav_LLamar:
+                Intent intent4 = new Intent(Intent.ACTION_DIAL,
+                        Uri.parse("tel:922912312"));
+                startActivity(intent4);
+                break;
+            case R.id.nav_Compartir:
+                Intent paramView;
+                paramView = new Intent("android.intent.action.SEND");
+                paramView.setType("text/plain");
+                paramView.putExtra("android.intent.extra.TEXT", "Descarga nuestra app CasanovApp de la PlayStore" +
+                        " \n" + "https://play.google.com/store/apps/details?id=app.product.demarktec.alo14_pasajero");
+                startActivity(Intent.createChooser(paramView, "Comparte Nuestro nuevo Aplicativo"));
+                break;
+            default:
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -139,6 +197,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
                 if (snapshot.exists()) {
                     NombresUsu = snapshot.child("Nombres").getValue().toString();
                     ApellidosUsu = snapshot.child("Apellidos").getValue().toString();
+
                     mTextViewNombresYApellidos.setText(NombresUsu + " " + ApellidosUsu);
                 }
             }

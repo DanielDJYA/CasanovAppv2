@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Casanova</string>
+    <string name="app_name">App Casanova</string>
+
     <string name="login">Login</string>
     <string name="registrarUsuario">Registrar Usuario</string>
     <string name="restablecerContraseña">Restablecer Contraseña</string>
@@ -19,39 +20,25 @@
     <string name="ingresePassword">Ingrese Contraseña</string>
     <string name="ingreseConfirmarPassword">Confirmar Contraseña</string>
     <string name="todo">todo</string>
+    <string name="caracteristicas">Caracteristicas:</string>
+    <string name="caracteristicash2">• Aire acondicionado • Frigobar • Conexion a Internet • Jacuzzy • Telefono en linea Directa • TV plasma satelital</string>
     <string name="reservar_ahora">Reservar Ahora</string>
     <string name="habitacion_doble">Habitacion Doble</string>
     <string name="titulo_de_la_foto">Titulo de la foto</string>
-    <string name="drawer_open">Abrir</string>
-    <string name="drawer_close">Cerrar</string>
-    <!-- FRAGMENT NOSOTROS -->
-    <string name="nosotros_Bienvenido">Bienvenido</string>
-    <string name="nosotros_mision">Misión</string>
-    <string name="nosotros_vision">Visión</string>
-    <string name="nosotros_text">em Ipsum is simply dummy text of the printing and
-        typesetting industry. Lorem Ipsum has been the industrys standard dummy text
-        ever since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five centuries,
-        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
-    <!-- FRAGMENT CARDVIEW_HABITACIONES -->
-    <string name="habitacion_nombre">Habitacion A</string>
-    <string name="habitacion_precio">S/ </string>
-    <string name="habitacion_precio2">100.00</string>
-    <string name="habitacion_caracteristicas">Caracteristicas: </string>
-    <string name="habitacion_descripcion">Aire acondicionadoFrigobar, Conexion a Internet, Jacuzzy, Telefono en linea, Direct TV plasma satelital</string>
-    <!-- TEXTO MENU LATERAL -->
-    <string name="nav_item_Habitaciones">Habitaciones</string>
-    <string name="nav_item_Reservas">Reservas</string>
-    <string name="nav_item_Reservar_WhastApp">Reservar por WhastApp</string>
-    <string name="nav_item_Perfil">Perfil</string>
-    <string name="nav_item_Nosotros">Nosotros</string>
-    <string name="nav_item_Salir">Salir</string>
-    <string name="nav_item_Facebook">Facebook</string>
-    <string name="nav_item_WhastApp">WhastApp</string>
-    <string name="nav_item_Instamgram">Instagram</string>
-    <string name="nav_item_Ubicacion">Ubicacion</string>
-    <string name="nav_item_Llamar">Llamar al Hotel</string>
-    <string name="nav_item_Compartir">Compartir App</string>
+    <string name="drawer_open">abrir</string>
+    <string name="drawer_close">cerrar</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mision">MISIÓN</string>
+    <string name="vision">VISIÓN</string>
+    <string name="bienvenidos">BIENVENIDOS</string>
+    <string name="text_mision">Satisfacer las necesidades de nuestros clientes y huéspedes superando sus expectativas brindándoles un servicio d
+        e calidad y amigable con el medio ambiente a través de nuestros colaboradores permitiéndoles disfrutar de un espacio agradable y cómodo.</string>
+    <string name="text_vision">Posicionarse en el mercado del sector hotelero vacacional y de negocio, mejorando las experiencias de nuestros
+        clientes y así mismo ser una de las mejores cadenas de hoteles de Lima</string>
+    <string name="text_bienvenido">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+        . It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was pop
+        ularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+        software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+
 </resources>

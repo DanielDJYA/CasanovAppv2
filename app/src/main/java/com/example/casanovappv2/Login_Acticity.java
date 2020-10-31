@@ -100,7 +100,7 @@ public class Login_Acticity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //SI LA TAREA ES EXITOSA NOS LLEGA A HOME_ACTIVITY Y TERMINA EL PROCESO DE LOGIN
             if(task.isSuccessful()){
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), Home_Acticity.class));
                 finish();
                 Toast.makeText(Login_Acticity.this, "Usuario Valido", Toast.LENGTH_SHORT).show();
             }else{

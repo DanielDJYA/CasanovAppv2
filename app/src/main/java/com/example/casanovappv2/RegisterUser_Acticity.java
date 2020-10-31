@@ -180,7 +180,7 @@ public class RegisterUser_Acticity extends AppCompatActivity {
                             //CCOMPROBAMOS SI LA TAREA2 TASK2 FUE EXISTOSA
                             if (task2.isSuccessful()) {
                                 //ENVIAMOS AL ACTIVITY_HOME.XML
-                                startActivity(new Intent(getApplicationContext(), Home_Acticity.class));
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 //TERMINAMOS LA ACCION
                                 finish();
                             } else {

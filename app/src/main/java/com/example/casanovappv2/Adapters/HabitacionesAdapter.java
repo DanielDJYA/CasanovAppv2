@@ -17,7 +17,7 @@ import com.example.casanovappv2.models.Habitaciones;
 
 import java.util.ArrayList;
 
-public class HabitacionesAdapter extends RecyclerView.Adapter<HabitacionesAdapter.ViewHolder> {
+public class HabitacionesAdapter extends RecyclerView.Adapter<HabitacionesAdapter.ViewHolder>{
 
     private int resource;
     private ArrayList<Habitaciones> mHabitacionesList;
@@ -46,7 +46,6 @@ public class HabitacionesAdapter extends RecyclerView.Adapter<HabitacionesAdapte
         return mHabitacionesList.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView mTextViewNombre;
         private TextView mTextViewCaracteristicas;
@@ -58,11 +57,10 @@ public class HabitacionesAdapter extends RecyclerView.Adapter<HabitacionesAdapte
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(view.getContext(), "HOLA", Toast.LENGTH_SHORT).show();
+                    Intent inten1=new Intent(v.getContext(), PerfilUserActivity.class);
+                    v.getContext().startActivity(inten1);
                 }
             });
-
-
             this.mTextViewNombre=(TextView) view.findViewById(R.id.mTextViewNombre);
             this.mTextViewCaracteristicas=(TextView) view.findViewById(R.id.mTextViewCaracteristicas);
             this.mTextViewPrecio=(TextView) view.findViewById(R.id.mTextViewPrecio);

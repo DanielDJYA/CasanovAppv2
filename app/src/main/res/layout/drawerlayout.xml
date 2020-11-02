@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <!--El contenido del Navigation Drawer -->
+
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -19,4 +21,4 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/menu" />
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>

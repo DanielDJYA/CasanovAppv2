@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -54,6 +55,9 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
 
+
+    /////
+    CardView cardView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +78,11 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
         //HACEMOS REFERENCIAS A LOS COMPONENTES DE ACTIVITY_HOME.XML
         recyclerViewHabitaciones = (RecyclerView) findViewById(R.id.recyclerViewHabitaciones);
         recyclerViewHabitaciones.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+
+
         //HACEMOS REFERENCIA A FIREBASE: AUTH Y DATABASE
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -89,7 +98,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_perfil:
-                startActivity(new Intent(getApplicationContext(),PerfilUser_Activity.class));
+                startActivity(new Intent(getApplicationContext(),PerfilUserActivity.class));
                 break;
             case R.id.nav_habitacion:
                 //startActivity(new Intent(this, Permisos.class));
@@ -146,7 +155,7 @@ public class Home_Acticity extends AppCompatActivity implements NavigationView.O
                 Intent paramView;
                 paramView = new Intent("android.intent.action.SEND");
                 paramView.setType("text/plain");
-                paramView.putExtra("android.intent.extra.TEXT", "Descarga nuestra app CasanovApp de la PlayStore" +
+                paramView.putExtra("android.intent.extra.TEXT", "Descarga nuestra aplicacion CasanovApp de la PlayStore" +
                         " \n" + "https://play.google.com/store/apps/details?id=app.product.demarktec.alo14_pasajero");
                 startActivity(Intent.createChooser(paramView, "Comparte Nuestro nuevo Aplicativo"));
                 break;
